@@ -9,3 +9,7 @@ about:
 careers:
     path: /careers
     controller: App\Controller\DefaultController::careers
+    
+contact:
+    path: /contact
+    controller: App\Controller\DefaultController::contact

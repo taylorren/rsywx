@@ -20,47 +20,12 @@
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <!-- Box Outer Layer [ Box 3 ] -->
-                    <div class="box box-lg br-red animated">
-                        <div class="box-content box-service box-default">
-                            <!-- Heading -->
-                            <h4><i class="fa fa-trophy"></i> Develops Serve</h4>
-                            <!-- Paragraph -->
-                            <p>Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-                            <!-- Box Service List -->
-                            <ul class="list-unstyled">
-                                <li><i class="fa fa-check-square-o"></i> Php Project</li>
-                                <li><i class="fa fa-check-square-o"></i> Network Maintenance</li>
-                                <li><i class="fa fa-check-square-o"></i> HTML5 Websites</li>
-                                <li><i class="fa fa-check-square-o"></i> CSS3 Version Support</li>
-                                <li><i class="fa fa-check-square-o"></i> JQuery Technology</li>
-                            </ul>
-                            <!-- View Button -->
-                            <div class="view-button">
-                                <a href="service.html" class="btn btn-info">View More <i class="fa fa-angle-right"></i></a>
-                            </div>
-                            <div class="view-button">
-                                <a href="#" class="btn btn-default">Try Now <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                    {{ include("widget/default/skills.html.twig") }}
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <!-- Box Outer Layer [ Box 4 ] -->
                     <div class="box box-md pull-up-sm animated">
-                        <div class="box-content box-gallery padd-zero">
-                            <div class="img-details box-hover-black">
-                                <!-- Heading -->
-                                <h3>Old Fashion Car With Latest Engine</h3>
-                                <!-- Paragraph -->
-                                <p>On the other hand, we denounce with righteous in our power of choice isded and foresee the pain and trouble that are bound to ensue.</p>
-                                <!-- View Next Button -->
-                                <div class="view-button">
-                                    <a href="portfolio.html" class="btn btn-danger">View More <i class="fa fa-angle-right"></i></a>
-                                </div>
-                            </div>
-                            <!-- Image -->
-                            <img src="img/nav1.jpg" class="img-responsive box-gallery-img" alt="" />
-                        </div>
+                        {{ render(controller('App\\Controller\\DefaultController::latestBook', {max: 3})) }}
                     </div>
                 </div>
             </div>

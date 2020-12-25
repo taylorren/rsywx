@@ -22,4 +22,10 @@ class DefaultController extends AbstractController
     {
         return $this->render('default/careers.html.twig');
     }
+    
+    public function latestBook($max=1):Response
+    {
+        $uri="http://api/book/"
+        return $this->render('widget/default/latest_book.html.twig');
+    }
 }
