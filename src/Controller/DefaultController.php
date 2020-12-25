@@ -12,4 +12,9 @@ class DefaultController extends AbstractController
     {
         return $this->render('default/index.html.twig');
     }
+    
+    public function about(): Response 
+    {
+        return $this->render('default/aboutus.html.twig');
+    }
 }
