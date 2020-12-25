@@ -13,3 +13,7 @@ careers:
 contact:
     path: /contact
     controller: App\Controller\DefaultController::contact
+    
+detail:
+    path: /book/{bookid}.html
+    controller: App\Controller\BookController::detail
