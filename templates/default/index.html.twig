@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}任氏有无轩 | 首页{% endblock %}
+{% block meta %}
+    <meta name="description" content="任氏有无轩首页">
+    <meta name="keywords" content="任氏有无轩, 首页">
+{% endblock %}    
 
 {% block body %}
 
@@ -11,26 +15,7 @@
                 <div class="col-md-4 col-sm-6">
                     <div class="row">
                         {{ include('widget/default/aboutus.html.twig') }}
-                        <div class="col-md-6 col-sm-6 col-xs-6">
-                            <!-- Box Outer Layer [ Box 2 ] -->
-                            <div class="box box-md br-yellow animated">
-                                <!-- Box Hover Effect -->
-                                <div class="box-hover box-hover-black">
-                                    <!-- Hover Icon -->
-                                    <span class="hover-icon">GO</span>
-                                </div>
-                                <!-- Box Link -->
-                                <a href="careers.html">
-                                    <!-- Box Link Content -->
-                                    <div class="box-content navigation">
-                                        <!-- Box Icon -->
-                                        <i class="fa fa-book"></i>
-                                        <!-- Box Title -->
-                                        <span class="box-title">Careers</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                        {{ include('widget/default/careers.html.twig') }}
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">

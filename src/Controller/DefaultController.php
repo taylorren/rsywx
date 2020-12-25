@@ -17,4 +17,9 @@ class DefaultController extends AbstractController
     {
         return $this->render('default/aboutus.html.twig');
     }
+    
+    public function careers():Response
+    {
+        return $this->render('default/careers.html.twig');
+    }
 }

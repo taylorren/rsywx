@@ -5,3 +5,7 @@ home:
 about:
     path: /about
     controller: App\Controller\DefaultController::about
+    
+careers:
+    path: /careers
+    controller: App\Controller\DefaultController::careers

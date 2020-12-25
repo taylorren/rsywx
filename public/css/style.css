@@ -3589,6 +3589,21 @@ div.ppt {
 	left: 46%;
 }
 
+.footer .footer-widget .map i.china {
+	top: 37%;
+	left: 76%;
+}
+
+.footer .footer-widget .map i.singapore {
+	top: 55%;
+	left: 76%;
+}
+
+.footer .footer-widget .map i.uk {
+	top: 17%;
+	left: 45%;
+}
+
 .footer .footer-widget span.location-name{
 	display: block;
 	margin-top: 5px;
