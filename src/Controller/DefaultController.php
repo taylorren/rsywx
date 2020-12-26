@@ -33,18 +33,5 @@ class DefaultController extends AbstractController
         return $this->render('default/careers.html.twig');
     }
     
-    public function latestBook($max=1):Response
-    {
-        $uri="book/latest/1";
-        $res= json_decode((string)($this->service->getService()->get($uri)->getBody()))->data[0];
-        
-        $title=$res->title;
-        $author=$res->author;
-        $bookid=$res->bookid;
-        
-        $imguri="book/image/$bookid/$author/$title/600";
-        $img= json_decode((string)($this->service->getService()->get($imguri)->getBody()))->data;
-                
-        return $this->render('widget/default/latest_book.html.twig', ['res'=>$res, 'img'=>$img]);
-    }
+    
 }

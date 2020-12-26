@@ -25,7 +25,7 @@
                 <div class="col-md-4 col-sm-6">
                     <!-- Box Outer Layer [ Box 4 ] -->
                     <div class="box box-md pull-up-sm animated">
-                        {{ render(controller('App\\Controller\\DefaultController::latestBook', {max: 3})) }}
+                        {{ render(controller('App\\Controller\\BookController::latestBook', {max: 1})) }}
                     </div>
                 </div>
             </div>
@@ -34,12 +34,7 @@
                 <div class="col-md-4 col-sm-6">
                     <!-- Box Outer Layer [ Box 5 ] -->
                     <div class="box box-md br-black pull-up animated">
-                        <div class="pics" id="box-slider-one">
-                            <!-- Images -->
-                            <img src="img/w1.jpg" class="img-responsive" alt="" />
-                            <img src="img/w2.jpg" class="img-responsive" alt="" />
-                            <img src="img/w3.jpg" class="img-responsive" alt="" />
-                        </div>
+                        {{ render(controller('App\\Controller\\BookController::randomBook', {max: 3})) }}
                     </div>
                 </div>
                 <!-- Offset for column gap -->
