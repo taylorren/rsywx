@@ -25,9 +25,6 @@ class BookController extends AbstractController
         $uri="book/latest/$max";
         $res= json_decode((string)($this->service->getService()->get($uri)->getBody()))->data[0];
         
-        $img=$this->img($res);
-        $res->img=$img;
-
         return $this->render('widget/default/latest_book.html.twig', ['res'=>$res]);
     }
     
@@ -36,23 +33,6 @@ class BookController extends AbstractController
         $uri="book/random/$max";
         $res= json_decode((string)($this->service->getService()->get($uri)->getBody()))->data;
         
-        foreach($res as &$book)
-        {
-            $book->img=$this->img($book);
-        }
-        
         return $this->render('widget/default/random_book.html.twig', ['res'=>$res]);
-    }
-    
-    private function img($res)
-    {
-        $title=$res->title;
-        $author=$res->author;
-        $bookid=$res->bookid;
-        
-        $imguri="book/image/$bookid/$author/$title/600";
-        $img= json_decode((string)($this->service->getService()->get($imguri)->getBody()))->data;
-        
-        return $img;
     }
 }
