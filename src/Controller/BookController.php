@@ -17,7 +17,10 @@ class BookController extends AbstractController
     }
     public function detail($bookid): Response
     {
-        dump($bookid);die();
+        $uri="book/$bookid";
+        $book= json_decode((string)($this->service->getService()->get($uri)->getBody()))->data;
+        
+        return $this->render('book/detail.html.twig', ['book'=>$book]);
     }
     
     public function latestBook($max=1):Response
