@@ -11,7 +11,7 @@ class GuzzleService
     public function __construct()
     {
         $this->service=new Client([
-            'base_uri' => 'http://api/',
+            'base_uri' => 'https://api.rsywx.com/',
         ]);
     }
     
