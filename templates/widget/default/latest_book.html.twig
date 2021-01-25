@@ -1,7 +1,7 @@
 <div class="box-content box-gallery padd-zero">
     <div class="img-details box-hover-black">
         <!-- Heading -->
-        <h3><a href="{{ path("detail", {bookid:res.bookid}) }}">{{ res.title }}</a></h3>
+        <h3>最新收藏的书</h3>
         <!-- Paragraph -->
         <p>最新收藏于{{ res.purchdate|date("Y年m月d日") }}的书是{{ res.author }}所著的《<a href="{{ path("detail", {bookid:res.bookid}) }}">{{ res.title }}</a>》。</p>
         <p>摘要：{{ res.intro }}</p>
@@ -11,6 +11,6 @@
         </div>
     </div>
     <!-- Image -->
-    <img src="http://api/book/image/{{ res.bookid  }}/{{ res.author }}/{{ res.title }}/500" class="img-responsive box-gallery-img" alt="{{ res.title }}" />
+    <img src="http://api/book/image/{{ res.bookid  }}/{{ res.author }}/{{ res.title }}/600" class="img-responsive box-gallery-img" alt="{{ res.title }}" />
     
 </div>
