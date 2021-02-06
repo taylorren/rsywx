@@ -19,6 +19,9 @@
                                     ，{{ book.copyrighter }}译
                                 {% endif %}
                             </p>
+                            <p>{{ book.pu_name }}</p>
+                            <p>{{ book.isbn }} | {{ book.category }}</p>
+                            <p>藏书位置：<span class="badge bg-secondary">{{ book.location }}</span></p>
                         </div>
                         <!-- Sidebar Links -->
                         <div class="sidebar-link col-disable">
@@ -69,6 +72,18 @@
                                             {% endfor  %}
                                         </p>
                                     </div>
+
+                                    <div class="sidebar-widget br-lblue">
+                                        <!-- Heading -->
+                                        <h4><i class="fab fa-readme "></i> 书籍简介</h4>
+                                        <!-- List -->
+                                        {% if book.intro|length !=0 %}
+                                            <p>{{ book.intro|nl2br }}</p>
+                                        {% else %}
+                                            <p>本书还没有简介</p>
+                                        {% endif %}
+                                        <!-- Button -->
+                                    </div>
                                     <div class="sidebar-widget br-orange">
                                         <!-- Heading // Icon -->
                                         <h4><i class="fas fa-book-reader"></i> 读书笔记</h4>
@@ -77,23 +92,56 @@
                                             <p>这本书还没有任何书评。</p>
                                         {% else %}
                                             {% for review in book.reviews %}
-                                                <i class="fas fa-angle-right"></i>&nbsp;<a href="{{ review.URI }}" title="写作于{{ review.datein }}" target="_blank">{{ review.title }}</a>
-                                            {% endfor %}
-                                        {% endif %}
+                                                <p><i class="fas fa-angle-right"></i> <a href="{{ review.URI }}" title="写作于{{ review.datein }}" target="_blank">{{ review.title }}</a></p>
+                                                {% endfor %}
+                                            {% endif %}
                                     </div>
-                                    <div class="sidebar-widget br-lblue">
-                                        <!-- Heading -->
-                                        <h4>SKODA BENZE</h4>
-                                        <!-- List -->
-                                        <ul class="list-unstyled">
-                                            <li>Voluptuary desires to obtain  accusation</li>
-                                            <li>Totem rem desires hysteria</li>
-                                            <li>Dicta sunt explde sires to obtain icabo</li>
-                                            <li>Denouncing plea desires obtain sure</li>
-                                            <li>Occaecati cupiditate non</li>
-                                        </ul>		
-                                        <!-- Button -->
-                                        <a href="#" class="btn btn-default btn-circle">Launch Product <i class="fa fa-angle-right"></i></a>
+                                    <div class="sidebar-widget br-yellow">
+                                        <!-- Heading // Icon -->
+                                        <h4><i class="fas fa-info"></i> 其他信息</h4>
+                                        <!-- Paragraph -->
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">项目</th>
+                                                    <th scope="col">描述</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">出版日期：</th>
+                                                    <td>{{ book.pubdate }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">印刷日期：</th>
+                                                    <td>{{ book.printdate }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">版次：</th>
+                                                    <td>{{ book.ver }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">购书日期：</th>
+                                                    <td>{{ book.purchdate }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">价格：</th>
+                                                    <td>{{ book.price }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">装帧：</th>
+                                                    <td>{{ book.deco }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">千字数：</th>
+                                                    <td>{{ book.kword }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">页数：</th>
+                                                    <td>{{ book.page }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>

@@ -14,14 +14,14 @@ class GuzzleService {
         if ($env == 'prod') {
             $this->service = new Client([
                 'base_uri' => 'https://api.rsywx.com/',
-                'http_errors' =>false,
+                //'http_errors' =>false,
             ]);
         }
         else
         {
             $this->service = new Client([
                 'base_uri' => 'http://api/',
-                'http_errors'=>false,
+                //'http_errors'=>false,
             ]);
         }
     }

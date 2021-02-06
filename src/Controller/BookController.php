@@ -16,12 +16,14 @@ class BookController extends AbstractController {
 
     public function detail($bookid): Response {
         $uri = "book/$bookid";
-        $res = $this->service->getService()->get($uri);
-        
-        if($res->getStatusCode()== 404)//book not found
+        try
+        {
+            $res = $this->service->getService()->get($uri);
+        }
+        catch (\GuzzleHttp\Exception\ClientException $e)
         {
             //TODO: redirec to a better looking "not found page"
-            throw $this->createNotFoundException("Not found");
+            echo('error');die();
         }
         
         $book=json_decode((string)$res->getBody())->data;
