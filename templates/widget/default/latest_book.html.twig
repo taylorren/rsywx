@@ -11,6 +11,6 @@
         </div>
     </div>
     <!-- Image -->
-    <img src="https://api.rsywx.com/book/image/{{ res.bookid  }}/{{ res.author }}/{{ res.title }}/600" class="img-responsive box-gallery-img" alt="{{ res.title }}" />
+    <img src="{% if api=='prod' %}https://api.rsywx.com/book/image/{% else %}http://api/book/image/{% endif %}{{ res.bookid  }}/{{ res.author }}/{{ res.title }}/600" class="img-responsive box-gallery-img" alt="{{ res.title }}" />
     
 </div>

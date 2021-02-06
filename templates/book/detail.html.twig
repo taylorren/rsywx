@@ -40,7 +40,7 @@
                                     <!-- Wrapper for slides -->
                                     <div class="carousel-inner">
                                         <div class="item active">
-                                            <img src="https://api.rsywx.com/book/image/{{ book.bookid  }}/{{ book.author }}/{{ book.title }}/600" class="img-responsive" alt="{{ book.title }}" />
+                                            <img src="{% if api=='prod' %}https://api.rsywx.com/book/image/{% else %}http://api/book/image/{% endif %}{{ book.bookid  }}/{{ book.author }}/{{ book.title }}/600" class="img-responsive" alt="{{ book.title }}" />
                                         </div>
                                     </div>
 
@@ -71,9 +71,15 @@
                                     </div>
                                     <div class="sidebar-widget br-orange">
                                         <!-- Heading // Icon -->
-                                        <h4><i class="fa fa-glass"></i> LUXJERY</h4>
+                                        <h4><i class="fas fa-book-reader"></i> 读书笔记</h4>
                                         <!-- Paragraph -->
-                                        <p>Best voluptuary accusation pols revolves laudanum, totam rem aperiam, eaque ipsa beatae vitae dicta sunt explicabo. </p>
+                                        {% if book.reviews|length==0 %}
+                                            <p>这本书还没有任何书评。</p>
+                                        {% else %}
+                                            {% for review in book.reviews %}
+                                                <i class="fas fa-angle-right"></i>&nbsp;<a href="{{ review.URI }}" title="写作于{{ review.datein }}" target="_blank">{{ review.title }}</a>
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
                                     <div class="sidebar-widget br-lblue">
                                         <!-- Heading -->
