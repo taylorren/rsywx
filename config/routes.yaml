@@ -17,3 +17,19 @@ contact:
 detail:
     path: /book/{bookid}.html
     controller: App\Controller\BookController::detail
+    
+search:
+    path: /book/{type}/{key}/{page}
+    controller: App\Controller\BookController::search
+    defaults: 
+        page: 1
+    requirements: 
+        page: '\d+'
+        
+read: 
+    path: /reading/{page}
+    controller: App\Controller\ReadController:search
+    defaults:
+        page: 1
+    requirements: 
+        page: '\d+'

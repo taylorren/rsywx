@@ -44,5 +44,14 @@ class BookController extends AbstractController {
 
         return $this->render('widget/default/random_book.html.twig', ['res' => $res]);
     }
+    
+    public function search($type, $key, $page):Response
+    {
+        $uri="book/search/$type/$key/$page";
+        $res= json_decode((string) ($this->service->getService()->get($uri)->getBody()))->data;
+        
+        
+        return $this->render('book/list.html.twig', ['res'=>$res]);
+    }
 
 }

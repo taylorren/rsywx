@@ -21,7 +21,7 @@
                             </p>
                             <p>{{ book.pu_name }}</p>
                             <p>{{ book.isbn }} | {{ book.category }}</p>
-                            <p>藏书位置：<span class="badge bg-secondary">{{ book.location }}</span></p>
+                            <p>藏书位置：<span class="badge bg-secondary">{% if book.location is not null %}{{ book.location }}{% else %}还没地方放{% endif %}</span></p>
                         </div>
                         <!-- Sidebar Links -->
                         <div class="sidebar-link col-disable">
@@ -68,7 +68,7 @@
                                         <!-- Paragraph -->
                                         <p>
                                             {% for tag in book.tags %}
-                                                {{ tag.tag }}&nbsp;
+                                                <a href="{{ path("search", {type: 'tag', key:tag.tag}) }}">{{ tag.tag }}</a>&nbsp;
                                             {% endfor  %}
                                         </p>
                                     </div>
@@ -100,7 +100,7 @@
                                         <!-- Heading // Icon -->
                                         <h4><i class="fas fa-info"></i> 其他信息</h4>
                                         <!-- Paragraph -->
-                                        <table class="table">
+                                        <table class="table table-sm">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">项目</th>

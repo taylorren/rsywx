@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    任氏有无轩 | 藏书列表
+{% endblock %}
+
+{% block body %}
+    {% set type=app.request.get('type') %}
+    {% set key=app.request.get('key') %}
+    {% set page=app.request.get('page') %}
+    <div class="inner-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <!-- Inner Page Content Sidebar -->
+                    <div class="page-sidebar">
+                        <!-- Page Title -->
+                        <div class="page-title br-pink">
+                            <!-- Inner Page Title // Heading -->
+                            <h2>藏书列表</h2>
+                            <!-- Paragraph -->
+                            <p>类型：
+                                <span class="badge bg-secondary">
+                                    {% if type =='title' %}书名
+                                    {% elseif type=='author'%}作者
+                                    {% elseif type=='tag' %}TAG
+                                    {% else %} 所有
+                                    {% endif %}
+                                </span><br/>
+                                关键词：<span class="badge bg-secondary">{% if key !='all' %}{{ key }}{% else %}不限{% endif %}</span><br/>
+                                页面：<span class="badge bg-secondary">{{ page }}</span> / <span class="badge bg-danger">{{ res.pc }}</span>
+                            </p>
+                        </div>
+                        <!-- Sidebar Links -->
+                        <div class="sidebar-link col-disable">
+                            <!-- Search Box -->
+                            {{ include("widget/sidebar.html.twig") }}
+                        </div>
+                    </div>
+                </div>
+                <!-- Main-bar Column -->
+                <div class="col-md-9">
+                    <div class="page-mainbar portfolio">
+                        <!-- Heading -->
+                        <h3>藏书列表</h3>
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link fas fa-angle-double-left" href="{{ path('search', {type: type, key: key, page: 1}) }}" aria-label="First"></a>
+                                </li>
+                                <li class="page-item {% if page==1 %}disabled{% endif %}"><a class="page-link fas fa-angle-left" href="{{ path('search', {type: type, key: key, page: page-1})}}"></a></li>
+                                <li class="page-item {% if page==res.pc %}disabled{% endif %}"><a class="page-link fas fa-angle-right" href="{{ path('search', {type: type, key: key, page: page+1})}}"></a></li>
+                                <li class="page-item">
+                                    <a class="page-link fas fa-angle-double-right" href="{{ path('search', {type: type, key: key, page: res.pc}) }}" aria-label="Last"></a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <!-- Portfolio Content -->
+                        <div class="portfolio-content">
+                            <div class="img-portfolio">
+                                <div id="portfolio">
+                                    <!-- Add the above used filter names inside div tag. You can add more than one filter names. For image lightbox you need to include "a" tag pointing to image link, along with the class "prettyphoto". -->          
+                                    <table class="table table-responsive table-sm table-dark">
+                                        <thead>
+                                            <tr class="table-primary">
+                                                <th scope="col">书名</th>
+                                                <th scope="col">作者</th>
+                                                <th scope="col">购书/整理时间</th>
+                                                <th scope="col">位置</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for book in res.books %}
+
+                                            <tr style="text-align: left">
+                                                <td><a href="{{ path('detail', {bookid: book.bookid}) }}">{{ book.title }}</a></td>
+                                                <td><a href="{{ path('search', {type:'author', key: book.author}) }}">{{ book.author }}</a></td>
+                                                <td>{{ book.purchdate|date("Y年m月d日") }}</td>
+                                                <td>{% if book.location is null %}还没有地方放{% else %}{{ book.location }}{% endif %}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
