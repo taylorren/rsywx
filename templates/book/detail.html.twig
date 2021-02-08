@@ -68,7 +68,7 @@
                                         <!-- Paragraph -->
                                         <p>
                                             {% for tag in book.tags %}
-                                                <a href="{{ path("search", {type: 'tag', key:tag.tag}) }}">{{ tag.tag }}</a>&nbsp;
+                                                <a href="{{ path("list", {type: 'tag', key:tag.tag}) }}">{{ tag.tag }}</a>&nbsp;
                                             {% endfor  %}
                                         </p>
                                     </div>

@@ -45,13 +45,17 @@ class BookController extends AbstractController {
         return $this->render('widget/default/random_book.html.twig', ['res' => $res]);
     }
     
-    public function search($type, $key, $page):Response
+    public function list($type, $key, $page):Response
     {
         $uri="book/search/$type/$key/$page";
         $res= json_decode((string) ($this->service->getService()->get($uri)->getBody()))->data;
         
-        
         return $this->render('book/list.html.twig', ['res'=>$res]);
     }
-
+    
+    public function search(\Symfony\Component\HttpFoundation\Request $req)
+    {
+        $key=$req->get("keyword");
+        return $this->redirect($this->generateUrl("list", ['type'=>'various', 'key'=>$key, 'page'=>1]));
+    }
 }

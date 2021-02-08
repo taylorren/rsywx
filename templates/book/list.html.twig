@@ -46,12 +46,12 @@
                         <nav aria-label="Page navigation">
                             <ul class="pagination">
                                 <li class="page-item">
-                                    <a class="page-link fas fa-angle-double-left" href="{{ path('search', {type: type, key: key, page: 1}) }}" aria-label="First"></a>
+                                    <a class="page-link fas fa-angle-double-left" href="{{ path('list', {type: type, key: key, page: 1}) }}" aria-label="First"></a>
                                 </li>
-                                <li class="page-item {% if page==1 %}disabled{% endif %}"><a class="page-link fas fa-angle-left" href="{{ path('search', {type: type, key: key, page: page-1})}}"></a></li>
-                                <li class="page-item {% if page==res.pc %}disabled{% endif %}"><a class="page-link fas fa-angle-right" href="{{ path('search', {type: type, key: key, page: page+1})}}"></a></li>
+                                <li class="page-item {% if page==1 %}disabled{% endif %}"><a class="page-link fas fa-angle-left" href="{{ path('list', {type: type, key: key, page: page-1})}}"></a></li>
+                                <li class="page-item {% if page==res.pc %}disabled{% endif %}"><a class="page-link fas fa-angle-right" href="{{ path('list', {type: type, key: key, page: page+1})}}"></a></li>
                                 <li class="page-item">
-                                    <a class="page-link fas fa-angle-double-right" href="{{ path('search', {type: type, key: key, page: res.pc}) }}" aria-label="Last"></a>
+                                    <a class="page-link fas fa-angle-double-right" href="{{ path('list', {type: type, key: key, page: res.pc}) }}" aria-label="Last"></a>
                                 </li>
                             </ul>
                         </nav>

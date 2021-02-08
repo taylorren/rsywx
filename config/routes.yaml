@@ -18,9 +18,9 @@ detail:
     path: /book/{bookid}.html
     controller: App\Controller\BookController::detail
     
-search:
+list:
     path: /book/{type}/{key}/{page}
-    controller: App\Controller\BookController::search
+    controller: App\Controller\BookController::list
     defaults: 
         page: 1
     requirements: 
@@ -33,3 +33,8 @@ read:
         page: 1
     requirements: 
         page: '\d+'
+
+search: 
+    path: /book/search
+    controller: App\Controller\BookController::search
+    methods: POST

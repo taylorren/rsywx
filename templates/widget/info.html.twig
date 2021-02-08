@@ -15,9 +15,9 @@
             <div class="col-md-4 col-sm-4">
                 <!-- Search Box -->
                 <div class="search">
-                    <form>
+                    <form action="{{ path('search') }}" method="POST">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="搜索书籍（书名、作者、tag）">
+                            <input type="text" name="keyword" class="form-control" placeholder="搜索书籍（书名、作者、tag）">
                             <span class="input-group-btn">
                                 <button class="btn" type="button"><i class="fas fa-search-plus"></i></button>
                             </span>
