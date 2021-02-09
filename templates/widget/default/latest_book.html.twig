@@ -3,7 +3,7 @@
         <!-- Heading -->
         <h3>最新收藏的书</h3>
         <!-- Paragraph -->
-        <p>最新收藏于{{ res.purchdate|date("Y年m月d日") }}的书是{{ res.author }}所著的《<a href="{{ path("detail", {bookid:res.bookid}) }}">{{ res.title }}</a>》。</p>
+        <p>最新收藏于{{ res.purchdate|date("Y年m月d日") }}的书是{{ res.author }}所著的《<a href="{{ path("detail", {bookid:res.bookid}) }}" class="blue">{{ res.title }}</a>》。</p>
         <p><strong>摘要：</strong><br>{{ res.intro }}</p>
         <!-- View Next Button -->
         <div class="view-button">

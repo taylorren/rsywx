@@ -14,7 +14,7 @@
                             <!-- Inner Page Title // Heading -->
                             <h2>{{ book.title }}</h2>
                             <!-- Paragraph -->
-                            <p>【{{ book.region }}】{{ book.author }}著
+                            <p>【{{ book.region }}】<a href="{{ path('list', {type: 'author', key: book.author}) }}" class="blue">{{ book.author }}</a>著
                                 {% if book.translated %}
                                     ，{{ book.copyrighter }}译
                                 {% endif %}
@@ -53,7 +53,7 @@
                                 <!-- Recent Product -->
                                 <div class="recent-product">
                                     <!-- Heading -->
-                                    <h3>Recent Products</h3>
+                                    <h5>上次访问时间：{{ book.visit.lvt }}，总计访问次数：{{ book.visit.vc }}次。</h5>
                                     <a href="#"><img src="img/nav1.jpg" class="img-responsive img-thumbnail" alt="" /></a>
                                     <a href="#"><img src="img/w1.jpg" class="img-responsive img-thumbnail" alt="" /></a>
                                     <a href="#"><img src="img/w2.jpg" class="img-responsive img-thumbnail" alt="" /></a>
