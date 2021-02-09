@@ -38,3 +38,8 @@ search:
     path: /book/search
     controller: App\Controller\BookController::search
     methods: POST
+    
+add_tag:
+    path: /book/addtag
+    controller: App\Controller\BookController::addTag
+    methods: GET

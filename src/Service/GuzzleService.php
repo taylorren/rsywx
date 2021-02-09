@@ -26,7 +26,7 @@ class GuzzleService {
         }
     }
 
-    public function getService() {
+    public function getService(): Client {
         return $this->service;
     }
 

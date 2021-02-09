@@ -58,4 +58,22 @@ class BookController extends AbstractController {
         $key=$req->get("keyword");
         return $this->redirect($this->generateUrl("list", ['type'=>'various', 'key'=>$key, 'page'=>1]));
     }
+    
+    public function addTag(\Symfony\Component\HttpFoundation\Request $req)
+    {
+        $newtags=trim($req->get('newtags'));
+        $id=$req->get('id');
+        $bookid=$req->get('bookid');
+        
+        $uri="book/add_tag/$id/$newtags";
+        
+        
+        //$data= json_encode(['tags'=>$newtags, 'id'=>$id]);
+
+        $res=$this->service->getService()->get($uri);
+        
+        $uri=$this->generateUrl('detail', ['bookid'=>$bookid]);
+        
+        return $this->redirect($uri);
+    }
 }

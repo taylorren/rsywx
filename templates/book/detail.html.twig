@@ -68,8 +68,9 @@
                                         <!-- Paragraph -->
                                         <p>
                                             {% for tag in book.tags %}
-                                                <a href="{{ path("list", {type: 'tag', key:tag.tag}) }}">{{ tag.tag }}</a>&nbsp;
+                                                <a href="{{ path("list", {type: 'tag', key:tag.tag}) }}" class="blue">{{ tag.tag }}</a>&nbsp;
                                             {% endfor  %}
+                                            <a class="link-item" data-toggle="modal" data-target="#addtag"><i class="fas fa-plus white"></i></a>
                                         </p>
                                     </div>
 
@@ -92,7 +93,7 @@
                                             <p>这本书还没有任何书评。</p>
                                         {% else %}
                                             {% for review in book.reviews %}
-                                                <p><i class="fas fa-angle-right"></i> <a href="{{ review.URI }}" title="写作于{{ review.datein }}" target="_blank">{{ review.title }}</a></p>
+                                                <p><i class="fas fa-angle-right"></i> <a href="{{ review.URI }}" title="写作于{{ review.datein }}" target="_blank" class="white">{{ review.title }}</a></p>
                                                 {% endfor %}
                                             {% endif %}
                                     </div>
@@ -150,6 +151,41 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div>
+        <div class="modal fade" id="addtag">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title black">增加自己的TAG</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="get" action="{{ path('add_tag') }}" id="tagform" name="tagform" enctype="application/x-www-form-urlencoded" >
+                            <div class="row">
+                                <div class="col-sm-4 form-group">
+                                    <label class="control-label black" for="newtags">新增TAG</label>
+                                    <input
+                                        type="text"
+                                        class="input-xlarge black"
+                                        id="newtags"
+                                        name="newtags"
+                                        size="70"
+                                        >
+                                    <input type="hidden" name="id" value="{{ book.id }}">
+                                    <input type="hidden" name="bookid" value="{{ book.bookid }}">
+                                    <p class="help-block ">（用空格分隔）</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">保存</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Example row of columns -->
     </div>
 
 {% endblock %}
