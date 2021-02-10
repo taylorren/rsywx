@@ -74,7 +74,7 @@
 
                                             <tr style="text-align: left">
                                                 <td><a href="{{ path('detail', {bookid: book.bookid}) }}">{{ book.title }}</a></td>
-                                                <td><a href="{{ path('search', {type:'author', key: book.author}) }}">{{ book.author }}</a></td>
+                                                <td><a href="{{ path('list', {type:'author', key: book.author}) }}">{{ book.author }}</a></td>
                                                 <td>{{ book.purchdate|date("Y年m月d日") }}</td>
                                                 <td>{% if book.location is null %}还没有地方放{% else %}{{ book.location }}{% endif %}</td>
                                             </tr>
@@ -89,5 +89,4 @@
             </div>
         </div>
     </div>
-
 {% endblock %}

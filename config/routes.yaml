@@ -47,3 +47,7 @@ add_tag:
 lakers: 
     path: /lakers
     controller: App\Controller\MiscController::lakers
+    
+book_today:
+    path: book/today
+    controller: App\Controller\BookController::today

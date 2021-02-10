@@ -76,4 +76,16 @@ class BookController extends AbstractController {
         
         return $this->redirect($uri);
     }
+    
+    public function today()
+    {
+        $today=new \DateTime();
+        $m=$today->format('m');
+        $d=$today->format("d");
+        $uri="book/today/$m/$d";
+        
+        $res=json_decode((string)($this->service->getService()->get($uri)->getBody()))->data;
+        
+        return $this->render("book/today.html.twig", ['books'=>$res->books, 'm'=>$m, 'd'=>$d]);
+    }
 }

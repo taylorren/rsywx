@@ -1,0 +1,87 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    任氏有无轩 | 历史上{{ m }}月{{ d }}日的藏书
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="任氏有无轩职业生涯">
+    <meta name="keywords" content="任氏有无轩, 职业">
+{% endblock %}    
+
+{% block body %}
+    {% set colors=['br-red', 'br-yellow', 'br-green'] %}
+    <div class="inner-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <!-- Inner Page Content Sidebar -->
+                    <div class="page-sidebar">
+                        <!-- Page Title -->
+                        <div class="page-title br-green">
+                            <!-- Inner Page Title // Heading -->
+                            <h2>“今日”藏书</h2>
+                            <!-- Paragraph -->
+                            <p>历史上的{{ m }}月{{ d }}日，共有<span class="badge bg-secondary">{{ books|length }}</span>年收藏了书籍。</p>
+                        </div>
+                        <!-- Sidebar Links -->
+                        <div class="sidebar-link col-disable">
+                            <!-- Search Box -->
+                            {{ include('widget/sidebar.html.twig') }}
+                        </div>
+                    </div>
+                </div>
+                <!-- Main-bar Column -->
+                <div class="col-md-9">
+                    <div class="page-mainbar career">
+                        <!-- Heading -->
+                        <h3>历年今日藏书一览</h3>
+                        <!-- Careers Content -->
+                        <div class="career-content">
+                            <!-- Navigation Bar Menu list -->
+                            <ul id="mytab" class="nav nav-tabs">
+                                {% for r in books %}
+                                    <li class="{% if loop.index==1 %}active{% endif %}"><a href="#{{ r.y }}" data-toggle="tab" class=" {{cycle(colors, loop.index-1)}}">{{ r.y }} {{ loop.index }}&nbsp;<span class="badge bg-secondary">{{ r.bc }}</span></a></li>
+
+                                {% endfor %}
+                            </ul>
+                            <!-- Content for each menu item -->
+                            <div class="tab-content">
+                                <!-- First Content for Nav bar -->
+                                {%  for r in books %}
+                                    <div class="tab-pane fade {% if loop.index==1 %}in active{% endif %} {{cycle(colors, loop.index-1)}}" id="{{r.y}}">
+                                        <h4>藏书列表</h4>
+                                        <table class="table table-responsive table-sm table-dark">
+                                            <thead>
+                                                <tr class="table-primary">
+                                                    <th scope="col">书名</th>
+                                                    <th scope="col">作者</th>
+                                                    <th scope="col">购书/整理时间</th>
+                                                    <th scope="col">位置</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                
+                                                {% for book in r.books %}
+
+                                                    <tr style="text-align: left">
+                                                        <td><a class="blue" href="{{ path('detail', {bookid: book.bookid}) }}">{{ book.title }}</a></td>
+                                                        <td><a href="{{ path('list', {type:'author', key: book.author}) }}">{{ book.author }}</a></td>
+                                                        <td>{{ book.purchdate|date('Y年m月d日') }}</td>
+                                                        <td>{{ book.location }}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                {% endfor %}
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}    
