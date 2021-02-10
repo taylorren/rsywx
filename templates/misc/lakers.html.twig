@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    任氏有无轩 | 湖人{{ year }}-{{ year+1 }}赛季简报
+{% endblock %}
+
+{% block body %}
+    {% set win=res.status.win %}
+    {% set lose=res.status.lose %}
+    {% set games=res.games %}
+    <div class="inner-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <!-- Inner Page Content Sidebar -->
+                    <div class="page-sidebar">
+                        <!-- Page Title -->
+                        <div class="page-title br-pink">
+                            <!-- Inner Page Title // Heading -->
+                            <h2>湖人</h2>
+                            <!-- Paragraph -->
+                            <p>赛季：
+                                <span class="badge bg-secondary">
+                                    {{ year }} - {{ year+1 }}
+                                </span><br/>
+                                胜场：<span class="badge bg-secondary">{{ win }}</span><br/>
+                                负场：<span class="badge bg-secondary">{{ lose }}</span></br>
+                                胜率：<span class="badge bg-secondary yellow">{% if(win+lose)==0 %}0.0{% else %}{{ (win/(win+lose)*100)|number_format(1, '.', ',')}}{% endif %}%</span>
+                            </p>
+                        </div>
+                        <!-- Sidebar Links -->
+                        <div class="sidebar-link col-disable">
+                            <!-- Search Box -->
+                            {{ include("widget/sidebar.html.twig") }}
+                        </div>
+                    </div>
+                </div>
+                <!-- Main-bar Column -->
+                <div class="col-md-9">
+                    <div class="page-mainbar portfolio">
+                        <!-- Heading -->
+                        <h3>赛事记录</h3>
+
+                        <!-- Portfolio Content -->
+                        <div class="portfolio-content">
+                            <div class="img-portfolio">
+                                <div id="portfolio">
+                                    <!-- Add the above used filter names inside div tag. You can add more than one filter names. For image lightbox you need to include "a" tag pointing to image link, along with the class "prettyphoto". -->          
+                                    <table class="table table-responsive table-sm table-dark">
+                                        <thead>
+                                            <tr class="table-primary">
+                                                <th scope="col">场次</th>
+                                                <th scope="col">对阵</th>
+                                                <th scope="col">日期</th>
+                                                <th scope="col">比分</th>
+                                                <th scope="col">胜负</th>
+                                                <th scope="col">备注</th>
+                                            </tr>
+                                            {% for game in games %}
+                                                <tr class="table-primary" style="text-align: left">
+                                                    <td scope="col">{{ game.id }}</td>
+                                                    <td scope="col">{{ game.team }}</td>
+                                                    <td scope="col">{{ game.dateplayed }}</td>
+                                                    <td scope="col">{{ game.selfscore }}:{{ game.oppscore }}</td>
+                                                    <td scope="col">{{ game.winlose }}</td>
+                                                    <td scope="col">{% if (game.remark)=="NULL" %}（无）{% else %}{{ game.remark }}{% endif %}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

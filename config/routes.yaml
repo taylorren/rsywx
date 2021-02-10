@@ -43,3 +43,7 @@ add_tag:
     path: /book/addtag
     controller: App\Controller\BookController::addTag
     methods: GET
+    
+lakers: 
+    path: /lakers
+    controller: App\Controller\MiscController::lakers
