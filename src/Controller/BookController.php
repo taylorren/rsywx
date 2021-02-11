@@ -32,17 +32,20 @@ class BookController extends AbstractController {
     }
 
     public function latestBook($max = 1): Response {
-        $uri = "book/latest/$max";
-        $res = json_decode((string) ($this->service->getService()->get($uri)->getBody()))->data[0];
-
-        return $this->render('widget/default/latest_book.html.twig', ['book' => $res]);
+        $uri1 = "book/latest/$max"; //get the latest one book
+        $uri2='book'; //get summary 
+      
+        $book=json_decode((string)$this->service->getService()->get($uri1)->getBody())->data[0];
+        $summary=json_decode($this->service->getService()->get($uri2)->getBody())->data;
+        
+        return $this->render('widget/default/latest_book.html.twig', ['book' => $book, 'summary'=>$summary]);
     }
 
-    public function randombook($max = 3): Response {
+    public function randomBook($max = 3): Response {
         $uri = "book/random/$max";
-        $res = json_decode((string) ($this->service->getService()->get($uri)->getBody()))->data;
+        $book = json_decode((string) ($this->service->getService()->get($uri)->getBody()))->data;
 
-        return $this->render('widget/default/random_book.html.twig', ['res' => $res]);
+        return $this->render('widget/default/random_book.html.twig', ['book' => $book[0]]);
     }
     
     public function list($type, $key, $page):Response
