@@ -35,7 +35,7 @@ class BookController extends AbstractController {
         $uri = "book/latest/$max";
         $res = json_decode((string) ($this->service->getService()->get($uri)->getBody()))->data[0];
 
-        return $this->render('widget/default/latest_book.html.twig', ['res' => $res]);
+        return $this->render('widget/default/latest_book.html.twig', ['book' => $res]);
     }
 
     public function randombook($max = 3): Response {

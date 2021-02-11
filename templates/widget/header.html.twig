@@ -1,6 +1,13 @@
-<div class="header">
-    <!-- Header Information -->
-    {{ include('widget/info.html.twig') }}
-    <!-- Header Navigation -->
-    {{ include('widget/nav.html.twig') }}
-</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-transparent navbar--darkimg">
+    <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+
+            <img class="logo logo-light hidden-md-down" src="/img/logo.png" alt="任氏有无轩">
+        </a>
+        {{ include('widget/nav.html.twig') }}
+        
+    </div>
+</nav>

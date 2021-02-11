@@ -1,16 +1,21 @@
-<div class="box-content box-gallery padd-zero">
-    <div class="img-details box-hover-black">
-        <!-- Heading -->
-        <h3>最新收藏的书</h3>
-        <!-- Paragraph -->
-        <p>最新收藏于{{ res.purchdate|date("Y年m月d日") }}的书是{{ res.author }}所著的《<a href="{{ path("detail", {bookid:res.bookid}) }}" class="blue">{{ res.title }}</a>》。</p>
-        <p><strong>摘要：</strong><br>{{ res.intro }}</p>
-        <!-- View Next Button -->
-        <div class="view-button">
-            <a href="{{ path("detail", {bookid:res.bookid}) }}" class="btn btn-danger">更多内容 <i class="fas fa-angle-right"></i></a>
+<div class="cbp-item web-design graphic print motion">
+    <div class="cbp-caption margin-bottom-20">
+        <div class="cbp-caption-defaultWrap">
+           <img src="{{ include("widget/cover.html.twig", {bookid: book.bookid, title: book.title, author: book.author, width: 600}) }}" alt="{{ book.title }}">
         </div>
-    </div>
-    <!-- Image -->
-    <img src="{% if api=='prod' %}https://api.rsywx.com/book/image/{% else %}http://api/book/image/{% endif %}{{ res.bookid  }}/{{ res.author }}/{{ res.title }}/600" class="img-responsive box-gallery-img" alt="{{ res.title }}" />
-    
+        <div class="cbp-caption-activeWrap">
+            <div class="cbp-l-caption-alignCenter">
+                <div class="cbp-l-caption-body">
+                    <ul class="link-captions no-bottom-space">
+                        <li><a href="{{ path('detail', {bookid: book.bookid}) }}"><i class="ti-link"></i></a></li>
+                        <li><a href="{{ include("widget/cover.html.twig", {bookid: book.bookid, title: book.title, author: book.author, width: 600}) }}" class="cbp-lightbox" data-title="Design Object"><i class="ti-plus"></i></a></li>
+                    </ul>
+                </div>
+            </div>                      
+        </div>                              
+    </div><!--/cbp-caption-->
+    <div class="cbp-title-dark mb30">
+        <div class="cbp-l-grid-agency-title">最新藏书</div>
+        <div class="cbp-l-grid-agency-desc">{{ book.purchdate|date("Y年m月d日") }}收藏了<a href="{{ path('list', {type: 'author', key: book.author}) }}">{{ book.author }}</a>的<a href="{{ path('detail', {bookid: book.bookid}) }}">《{{ book.title }}》</a>。</div>
+    </div><!--/bottom desc-->
 </div>

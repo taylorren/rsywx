@@ -1,6 +1,0 @@
-<div class="pics" id="box-slider-one">
-    <!-- Images -->
-    {% for book in res %}
-        <a href="{{ path('detail', {bookid: book.bookid}) }}"><img src="{% if api=='prod' %}https://api.rsywx.com/book/image/{% else %}http://api/book/image/{% endif %}{{ book.bookid  }}/{{ book.author }}/{{ book.title }}/600" class="img-responsive" alt="{{ book.title }}" /></a>
-    {% endfor %}
-</div>

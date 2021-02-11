@@ -1,219 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <!-- Title here -->
-        <title>{% block title %}RSYWX{% endblock %}</title>
-        <!-- Description, Keywords and Author -->
-        {% block meta %}
-            <meta name="description" content="Your description">
-            <meta name="keywords" content="Your,Keywords">
-        {% endblock %}
-        <meta name="author" content="任氏有无轩主人">
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <!-- Styles -->
-        <!-- Bootstrap CSS -->
-        <link href="/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Animate CSS -->
-        <link href="/css/animate.min.css" rel="stylesheet">
-        <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
-        <link href="/css/settings.css" rel="stylesheet">
-        <!--[if IE ]><link rel="stylesheet" href="css/settings-ie8.css"><![endif]-->
-        <!-- Portfolio CSS -->
-        <link href="/css/prettyPhoto.css" rel="stylesheet">
-        <!-- Font awesome CSS -->
-        <!-- <link href="css/font-awesome.min.css" rel="stylesheet"> -->
-        <script src="https://kit.fontawesome.com/3beb303192.js" crossorigin="anonymous">
-
-        </script>
-        <!-- Custom CSS -->
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}StartUp{% endblock %}</title>
+        <!-- Plugins CSS -->
+        <link href="/css/plugins/plugins.css" rel="stylesheet">
+        <!-- load css for cubeportfolio -->
+        <link rel="stylesheet" type="text/css" href="/cubeportfolio/css/cubeportfolio.min.css">     
         <link href="/css/style.css" rel="stylesheet">
-        <!-- Custom CSS -->
         <link href="/css/rsywx.css" rel="stylesheet">
+        <link rel="shortcut icon" type="image/jpg" href="/img/logo.jpg"/>
 
-        <!--[if IE]><link rel="stylesheet" href="css/ie-style.css"><![endif]-->
-
-        <!-- Favicon -->
-        <link rel="shortcut icon" href="/assets/images/logo.jpg">
     </head>
 
     <body>
+        <div id="preloader">
+            <div id="preloader-inner"></div>
+        </div><!--/preloader-->
 
-        <!-- Body Wrapper -->
-        <div class="wrapper white">
+        <!-- Pushy Menu -->
+        <aside class="pushy pushy-right">
+            <h3>
+                Off canvas menu Optional
+            </h3>
+        </aside>
+        <!-- Site Overlay -->
+        <div class="site-overlay"></div>
+        {{ include('widget/header.html.twig') }}
+        {% block body %}{% endblock %}
+        {{ include('widget/footer.html.twig') }}<!--/footer-->
+        <!--back to top-->
+        <a href="#" class="back-to-top hidden-xs-down" id="back-to-top"><i class="ti-angle-up"></i></a>
+        <!-- jQuery first, then Tether, then Bootstrap JS. -->
+        <script type="text/javascript" src="/js/plugins/plugins.js"></script> 
+        <script type="text/javascript" src="/js/assan.custom.js"></script> 
+        <!-- load cubeportfolio -->
+        {% block script %}
+        {% endblock %}
 
-            <!-- Header Start -->
-            {{ include('widget/header.html.twig') }}
-            <!-- Header End -->
-
-            <!-- Slider Start -->
-
-            <!-- Slider Taken out -->
-
-            <!-- Slider End -->
-
-            <!-- Box Wrapper -->
-            <!-- Body Section -->
-            {% block body %}
-            {% endblock %}
-            <!-- Body Section End-->
-            <!-- Footer Start -->
-            {{ include("widget/footer.html.twig") }}
-            <!-- Footer End -->
-
-        </div>
-        <!-- Footer End -->
-
-        <!-- Scroll to top -->
-        <span class="totop"><a href="#"><i class="fa fa-angle-up"></i></a></span>
-
-
-
-
-
-        <!-- Javascript files -->
-        <!-- jQuery -->
-        <script src="/js/jquery.js"></script>
-        <!-- Bootstrap JS -->
-        <script src="/js/bootstrap.min.js"></script>
-        <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
-        <script type="text/javascript" src="/js/jquery.themepunch.tools.min.js"></script>
-        <script type="text/javascript" src="/js/jquery.themepunch.revolution.min.js"></script>
-        <!-- Masonry JS -->
-        <script src="/js/masonry.pkgd.min.js"></script>
-        <script src="/js/imagesloaded.pkgd.min.js"></script>
-        <!-- Cycle JS -->
-        <script type="text/javascript" src="/js/jquery.cycle.all.js"></script>
-        <!-- jQuery flot -->
-        <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/excanvas.min.js"></script><![endif]-->
-        <script src="/js/jquery.flot.min.js"></script>
-        <script src="/js/jquery.flot.resize.min.js"></script>
-        <!-- Count To JS  -->
-        <script src="/js/jquery.countTo.js"></script>
-        <!-- jQuery way points -->
-        <script src="/js/waypoints.min.js"></script>
-        <!-- jQuery prettyPhoto & Isotope -->
-        <script src="/js/jquery.prettyPhoto.js"></script>
-        <script src="/js/isotope.js"></script>
-        <!-- Respond JS for IE8 -->
-        <script src="/js/respond.min.js"></script>
-        <!-- HTML5 Support for IE -->
-        <script src="/js/html5shiv.js"></script>
-        <!-- Custom JS -->
-        <script src="/js/custom.js"></script>
-        <!-- This Page JavaScript -->
-        <script type="text/javascript" >
-
-            // SLIDER REVOLUTION Java Script
-            jQuery(document).ready(function () {
-                jQuery('.tp-banner').revolution(
-                        {
-                            delay: 9000,
-                            startheight: 500,
-
-                            hideThumbs: 10,
-
-                            navigationType: "none",
-
-                            hideArrowsOnMobile: "on",
-
-                            touchenabled: "on",
-                            onHoverStop: "on",
-
-                            navOffsetHorizontal: 0,
-                            navOffsetVertical: 20,
-
-                            stopAtSlide: -1,
-                            stopAfterLoops: -1,
-
-                            shadow: 0,
-
-                            fullWidth: "on",
-                            fullScreen: "off"
-                        });
-            });
-
-            // Cycle Slide Js
-
-            $('#box-slider-one').cycle({
-                fx: 'uncover',
-                speed: 200,
-                timeout: 2500
-            });
-
-            /* ******************************************** */
-            /* plot js */
-            /* *************************************** */
-
-            $(function () {
-                /* Chart data #1 */
-                var d1 = [[0, 0], [1, 1.5], [2, 3.2], [3, 4.1], [4, 5.1], [5, 5], [6, 5.3], [7, 6], [8, 6.3], [9, 7], [10, 7.5], [11, 8]];
-
-                var options = {
-                    series: {
-                        lines: {
-                            show: true, fill: false, lineWidth: 1
-                        },
-                        points: {
-                            show: true, fill: true, lineWidth: 2, radius: 3, fillColor: "#fff"
-                        },
-                        shadowSize: 0
-                    },
-                    colors: ["#fff"],
-                    grid: {
-                        hoverable: true, color: "#fff", backgroundColor: null, borderWidth: 0, borderColor: "#fff", labelMargin: 10
-                    },
-                    xaxis: {
-                        ticks: 10,
-                        font: {
-                            size: 12,
-                            color: ["#fff"]
-                        }
-                    },
-                    yaxis: {
-                        ticks: 5,
-                        font: {
-                            size: 12,
-                            color: ["#fff"]
-                        }
-                    },
-                    legend: {
-                        backgroundOpacity: 0,
-                        noColumns: 2,
-                        labelBoxBorderColor: null
-                    }
-                };
-
-                $("<div id='tooltip'></div>").css({
-                    position: "absolute",
-                    display: "none",
-                    "border-radius": "1px",
-                    padding: "4px 5px",
-                    color: "#999",
-                    "font-size": "11px",
-                    "background-color": "#fff",
-                    "border": "1px solid #ccc",
-                    "z-index": "20"
-                }).appendTo("body");
-
-                $(".plot-chart").bind("plothover", function (event, pos, item) {
-                    if (item) {
-                        var x = item.datapoint[0].toFixed(2),
-                                y = item.datapoint[1].toFixed(2);
-
-                        $("#tooltip").html(x + ", " + y)
-                                .css({top: item.pageY + 5, left: item.pageX + 5})
-                                .fadeIn(200);
-                    } else {
-                        $("#tooltip").hide();
-                    }
-                });
-
-                $.plot(".plot-chart", [{data: d1, label: "Revenue"}], options);
-            });
-
-            // Type your codde here
-        </script>
     </body>
 </html>

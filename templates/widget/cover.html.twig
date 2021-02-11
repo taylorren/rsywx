@@ -1,0 +1,7 @@
+{% if api=="dev" %}
+    {% set cover='http://api' %}
+{% else  %}
+    {% set cover='https://api.rsywx.com' %}
+{% endif %}
+
+{{ cover }}/book/image/{{ bookid }}/{{ title }}/{{ author }}/{{ width }}
