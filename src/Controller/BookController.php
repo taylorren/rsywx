@@ -35,9 +35,17 @@ class BookController extends AbstractController {
         $uri1 = "book/latest/$max"; //get the latest one book
         $uri2='book'; //get summary 
       
-        $book=json_decode((string)$this->service->getService()->get($uri1)->getBody())->data[0];
-        $summary=json_decode($this->service->getService()->get($uri2)->getBody())->data;
+        //$book=json_decode((string)$this->service->getService()->get($uri1)->getBody())->data[0];
+        //$summary=json_decode($this->service->getService()->get($uri2)->getBody())->data;
         
+        $promises=[
+            'book'=>$this->service->getService()->getAsync($uri1),
+            'summary'=>$this->service->getService()->getAsync($uri2),
+        ];
+        
+        $responses= \GuzzleHttp\Promise\Utils::unwrap($promises);
+        $book=json_decode((string)$responses['book']->getBody())->data[0];
+        $summary=json_decode((string)$responses['summary']->getBody())->data;
         return $this->render('widget/default/latest_book.html.twig', ['book' => $book, 'summary'=>$summary]);
     }
 
