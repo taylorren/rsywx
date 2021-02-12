@@ -15,6 +15,8 @@
                     <h1>搜索： 
                         <span class="badge bg-warning text-dark">
                             {% if search.type=='title' %}标题
+                            {% elseif search.type=='various' %}
+                                书名+作者+TAG
                             {% else %}
                                 {{ search.type }}
                             {% endif %}
@@ -39,22 +41,31 @@
                     </thead>
                     <tbody>
                         {% for book in res.books %}
-                        <tr>
-                            <th scope="row"><a href="{{ path('detail', {bookid: book.bookid}) }}">{{ book.title }}</a></th>
-                            <td><a href="{{ path('list', {type: 'author', key: book.author}) }}">{{ book.author }}</a></td>
-                            <td>{{ book.purchdate|date('Y年m月d日') }}</td>
-                            <td>{% if book.location is null%}（还没有地方放）{% else %}{{ book.location }}{% endif %}</td>
-                        </tr>
+                            <tr>
+                                <th scope="row"><a href="{{ path('detail', {bookid: book.bookid}) }}">{{ book.title }}</a></th>
+                                <td><a href="{{ path('list', {type: 'author', key: book.author}) }}">{{ book.author }}</a></td>
+                                <td>{{ book.purchdate|date('Y年m月d日') }}</td>
+                                <td>{% if book.location is null%}（还没有地方放）{% else %}{{ book.location }}{% endif %}</td>
+                            </tr>
                         {% endfor %}
                     </tbody>
                 </table>
                 <div class='bg-faded pd-card'>
-                    <h3 class='font400 mb30'>Call us today at <strong>+01 303-493-2932</strong> or mail us at <strong>info@assan.com</strong>. We'll assist you</h3>
-                    <a href='contact.html' class='btn btn-outline-primary btn-lg'>Contact Us</a>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="{{ path('list', {type: search.type, key: search.key, page: 1}) }}"><i class="ti-angle-double-left"></i></a></li>
+                            <li class="page-item {% if search.page<=1 %}disabled{% endif %}"><a class="page-link" href="{{ path('list', {type: search.type, key: search.key, page: search.page-1}) }}"><i class="ti-angle-left"></i></a></li>
+                            <li class="page-item {% if search.page>=res.pc %}disabled{% endif %}"><a class="page-link" href="{{ path('list', {type: search.type, key: search.key, page: search.page+1}) }}"><i class="ti-angle-right"></i></a></li>
+                            <li class="page-item"><a class="page-link" href="{{ path('list', {type: search.type, key: search.key, page: res.pc}) }}"><i class="ti-angle-double-right"></i></a></li>
+                        </ul>
+                    </nav>
+                    直接修改浏览器中的页码可以快速跳转
                 </div>
-
             </div>
-            {{ include('widget/book/list_sidebar.html.twig') }}
+            <div class="col-lg-3 mb40">
+                {{ include('widget/book/search_sidebar.html.twig') }}
+            </div>
+
         </div>
     </div>
 {% endblock %}
