@@ -26,10 +26,10 @@ class ReadController extends AbstractController {
         
         $responses= \GuzzleHttp\Promise\Utils::unwrap($promises);
         
-        
         $read=json_decode((string)$responses['read']->getBody())->data[0];
+        $summary=json_decode((string)$responses['summary']->getBody())->data;
         
-        return $this->render('widget/default/latest_read.html.twig', ['read'=>$read]);
+        return $this->render('widget/default/latest_read.html.twig', ['read'=>$read, 'summary'=>$summary]);
     }
 
 }
