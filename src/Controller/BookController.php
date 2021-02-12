@@ -61,7 +61,11 @@ class BookController extends AbstractController {
         $uri="book/search/$type/$key/$page";
         $res= json_decode((string) ($this->service->getService()->get($uri)->getBody()))->data;
         
-        return $this->render('book/list.html.twig', ['res'=>$res]);
+        $search=[
+            'type'=>$type, 
+            'key'=>$key, 
+            'page'=>$page];
+        return $this->render('book/list.html.twig', ['res'=>$res, 'search'=>$search]);
     }
     
     public function search(\Symfony\Component\HttpFoundation\Request $req)
