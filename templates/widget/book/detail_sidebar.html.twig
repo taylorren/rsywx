@@ -1,46 +1,80 @@
-<div class="col-lg-3 mb40">
+<div class="col-lg-4 mb40">
     {{ include('widget/book/search_sidebar.html.twig') }}
     <div class="mb40">
-        <h4 class="sidebar-title">Categories</h4>
-        <ul class="list-unstyled categories">
-            <li><a href="#">Rent</a></li>
-            <li><a href="#">Sale</a></li>
-            <li class="active"><a href="#">Apartment</a>
-                <ul class="list-unstyled">
-                    <li><a href="#">Office</a></li>
-                    <li><a href="#">Godown</a></li>
-                    <li><a href="#">Gerage</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Top Rating</a></li>
-            <li><a href="#">Trending</a></li>
-            <li><a href="#">Newest Properties</a></li>
-        </ul>
+        <h4 class="sidebar-title">书籍详情</h4>
+        <table class="table table-borderless table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">项目</th>
+                    <th scope="col">内容</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">出版社</th>
+                    <td>{{ book.pu_name }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">出版日期</th>
+                    <td>{{ book.pubdate|date('Y年m月d日') }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">印刷日期</th>
+                    <td>{{ book.printdate|date('Y年m月d日') }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">版次</th>
+                    <td>{{ book.ver }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">装帧</th>
+                    <td>{{ book.deco }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">价格</th>
+                    <td>{{ book.price }}元</td>
+                </tr>
+                <tr>
+                    <th scope="row">千字数</th>
+                    <td>{{ book.kword }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">页数</th>
+                    <td>{{ book.page }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">藏书位置</th>
+                    <td>{% if book.location is null %}（还没有地方放）{% else %}<span class="badge bg-warning text-dark">{{ book.location }}</span>{% endif %}</td>
+                </tr>
+                <tr>
+                    <th scope="row">访问量</th>
+                    <td><span class="badge bg-warning text-dark">{{ book.visit.vc|number_format(0, '.', ',') }}</span>次</td>
+                </tr>
+                <tr>
+                    <th scope="row">上次访问</th>
+                    <td><span class="badge bg-warning text-dark">{{ book.visit.lvt }}</span></td>
+                </tr>
+            </tbody>
+        </table>
+
     </div><!--/col-->
     <div>
-        <h4 class="sidebar-title">Latest News</h4> 
-        <ul class="list-unstyled">
-            <li class="media">
-                <img class="d-flex mr-3 img-fluid" width="64" src="/images/wide1.jpg" alt="Generic placeholder image">
-                <div class="media-body">
-                    <h5 class="mt-0 mb-1"><a href="#">Lorem ipsum dolor sit amet</a></h5>
-                    April 05, 2017
-                </div>
-            </li>
-            <li class="media my-4">
-                <img class="d-flex mr-3 img-fluid" width="64" src="/images/wide2.jpg" alt="Generic placeholder image">
-                <div class="media-body">
-                    <h5 class="mt-0 mb-1"><a href="#">Lorem ipsum dolor sit amet</a></h5>
-                    Jan 05, 2017
-                </div>
-            </li>
-            <li class="media">
-                <img class="d-flex mr-3 img-fluid" width="64" src="/images/wide3.jpg" alt="Generic placeholder image">
-                <div class="media-body">
-                    <h5 class="mt-0 mb-1"><a href="#">Lorem ipsum dolor sit amet</a></h5>
-                    March 15, 2017
-                </div>
-            </li>
-        </ul>
+        <h4 class="sidebar-title">相关书评</h4> 
+        {% if book.reviews|length ==0 %}
+            这本书还没有书评
+        {% else %}
+            <ul class="list-unstyled">
+                {% for review in book.reviews %}
+                <li class="media">
+                    <img class="d-flex mr-3 img-fluid" width="40%" src="{{ render(controller("App\\Controller\\BlogController::firstImg", {'uri': review.URI})) }}" alt="{{ review.title }}">
+                    
+                    <div class="media-body">
+                        <h5 class="mt-0 mb-1"><a href="{{ review.URI}}">{{ review.title }}</a></h5>
+                        {{ review.datein|date('Y年m月d日') }}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
     </div>
 </div>

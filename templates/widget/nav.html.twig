@@ -29,24 +29,17 @@
             <a class="nav-link" aria-haspopup="true" aria-expanded="false" href="{{ path('list', {type: 'title', key: 'all'}) }}">藏书</a>
         </li>
         <li class="nav-item dropdown">
-            <a class="nav-link  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Blog</a>
-            <ul class="dropdown-menu dropdown-menu-left">
-                <li><a href="blog.html" class="dropdown-item">Blog Page</a></li>
-                <li><a href="blog-post.html" class="dropdown-item">Blog post</a></li>
-            </ul>
+            <a class="nav-link" aria-haspopup="true" aria-expanded="false" href="{{ path('read') }}">读书</a>
         </li>
-        <li class="nav-item dropdown active">
-            <a class="nav-link  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">其他站点</a>
-            <ul class="dropdown-menu dropdown-menu-left">
-                <li><a href="https://blog.rsywx.net/" class="dropdown-item">博客</a></li>
-                <li><a href="http://rsywx.com/" class="dropdown-item">维客</a></li>
-            </ul>
+        <li class="nav-item dropdown">
+            <a class="nav-link" aria-haspopup="true" aria-expanded="false" href="https://blog.rsywx.net" target="_blank">博客</a>
         </li>
-        <li class="nav-item dropdown"><a href="{{ path('contact') }}" class="nav-link">联系站长</a></li>
+        <li class="nav-item dropdown">
+            <a class="nav-link" aria-haspopup="true" aria-expanded="false" href="http://rsywx.com" target="_blank">维客</a>
     </ul>        
 
 </div>
 <ul class=" navbar-nav ml-auto navbar-right">                     
     <li class="nav-item"><a href="javascript:void(0)" class=" menu-btn nav-link"><i class="fa fa-dot-circle-o"></i> </a></li>
-    <li class="nav-item"><a href="javascript:void(0)" class=" btn btn-primary btn-rounded btn-sm">Sign up free</a></li>
+    <li class="nav-item"><a class=" btn btn-primary btn-rounded btn-sm" href="{{ path('contact') }}">联系站长</a></li>
 </ul>

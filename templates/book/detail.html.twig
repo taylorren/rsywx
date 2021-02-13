@@ -14,14 +14,14 @@
                         <li class="breadcrumb-item">藏书明细</li>
                     </ol>
                     <h1>{{ book.title }}</h1>
-                    <h5>ISBN: {{ book.isbn }}</h5>
+                    <h5>ISBN: <span class="badge bg-warning text-dark">{{ book.isbn }}</span>{% if book.category is not null %} | 分类号：<span class="badge bg-warning text-dark">{{ book.category|trim }}{% endif %}</span></h5>
                 </div>
             </div>
         </div>
     </div><!--page title end-->
     <div class="container pt90 pb50">
         <div class="row">
-            <div class="col-md-9 mb40">
+            <div class="col-md-8 mb40">
                 <article>
 
                     <div class="owl-carousel owl-theme carousel-image mb30">
@@ -36,107 +36,26 @@
                         <ul class="post-meta list-inline">
                             <li class="list-inline-item">
                                 <i class="fa fa-user-circle-o"></i> 
-                                <a href="{{ path('list', {type: 'author', key: book.author}) }}">{{ book.author }}</a>著
+                                <a href="{{ path('list', {type: 'author', key: book.author}) }}">【{{ book.region }}】{{ book.author }}</a>著
                                 {% if book.translated %}
                                     | {{ book.copyrighter }}译
                                 {% endif %}
 
                             </li>
                             <li class="list-inline-item">
-                                <i class="fa fa-calendar-o"></i> {{ book.purchdate|date('Y年m月d日') }}
+                                <i class="fa fa-calendar-o"></i> 收藏于{{ book.purchdate|date('Y年m月d日') }}
                             </li>
                             <li class="list-inline-item">
                                 <i class="fa fa-tags"></i> 
                                 {%  for tag in book.tags %}<a href="{{ path('list', {type: 'tag', key: tag.tag}) }}">{{ tag.tag }}</a>&nbsp;{% endfor %}
                             </li>
                         </ul>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, </p>
-                        <p class="lead">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, </p>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, </p>
-                        <ul class="list-inline share-buttons">
-                            <li class="list-inline-item">Share Post:</li>
-                            <li class="list-inline-item">
-                                <a href="#" class="social-icon-sm si-dark si-colored-facebook si-gray-round">
-                                    <i class="fa fa-facebook"></i>
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#" class="social-icon-sm si-dark si-colored-twitter si-gray-round">
-                                    <i class="fa fa-twitter"></i>
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#" class="social-icon-sm si-dark si-colored-linkedin si-gray-round">
-                                    <i class="fa fa-linkedin"></i>
-                                    <i class="fa fa-linkedin"></i>
-                                </a>
-                            </li>
-                        </ul>
-                        <hr class="mb40">
-                        <h4 class="mb40 text-uppercase font300">About Author</h4>
-                        <div class="media mb40">
-                            <i class="d-flex mr-3 fa fa-user-circle fa-5x text-primary"></i>
-                            <div class="media-body">
-                                <h5 class="mt-0 font700">Jane Doe</h5>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            </div>
-                        </div>
-                        <hr class="mb40">
-                        <h4 class="mb40 text-uppercase font300">Comments</h4>
-                        <div class="media mb40">
-                            <i class="d-flex mr-3 fa fa-user-circle-o fa-3x"></i>
-                            <div class="media-body">
-                                <h5 class="mt-0 font400 clearfix">
-                                    <a href="#" class="float-right">Reply</a>
-                                    Jane Doe</h5>
-                                Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            </div>
-                        </div>
-                        <div class="media mb40">
-                            <i class="d-flex mr-3 fa fa-user-circle-o fa-3x"></i>
-                            <div class="media-body">
-                                <h5 class="mt-0 font400 clearfix">
-                                    <a href="#" class="float-right">Reply</a>
-                                    Jane Doe</h5>
-                                Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            </div>
-                        </div>
-                        <div class="media mb40">
-                            <i class="d-flex mr-3 fa fa-user-circle-o fa-3x"></i>
-                            <div class="media-body">
-                                <h5 class="mt-0 font400 clearfix">
-                                    <a href="#" class="float-right">Reply</a>
-                                    Jane Doe</h5>
-                                Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            </div>
-                        </div>
-                        <hr class="mb40">
-                        <h4 class="mb40 text-uppercase font300">Post a comment</h4>
-                        <form role="form">
-                            <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" class="form-control" placeholder="John Doe">
-                            </div>
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" class="form-control" placeholder="john@doe.com">
-                            </div>
-                            <div class="form-group">
-                                <label>Comment</label>
-                                <textarea class="form-control" rows="5" placeholder="Comment"></textarea>
-                            </div>
-                            <div class="clearfix float-right">
-                                <button type="button" class="btn btn-primary btn-lg">Submit</button>
-                            </div>
-                        </form>
-                    </div>
+                        <p>{{ book.intro|nl2br }}</p>
                 </article><!-- post article-->
 
 
             </div>
-            {{ include('widget/book/detail_sidebar.html.twig') }}
+            {{ include('widget/book/detail_sidebar.html.twig', {book: book}) }}
         </div>
     </div>
 {% endblock %}
