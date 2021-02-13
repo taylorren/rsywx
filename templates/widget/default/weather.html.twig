@@ -1,0 +1,18 @@
+<div class="cbp-item misc">
+    <div class="cbp-caption margin-bottom-20">
+        <div class="cbp-caption-defaultWrap">
+            <img src="/img/szc.jpg" alt="苏州工业园区">
+        </div>                        
+    </div><!--/cbp-caption-->
+    <div class="cbp-title-dark mb30">
+        <div class="cbp-l-grid-agency-title">天气预报</div>
+        <div class="cbp-l-grid-agency-desc">{{ "now"|date('Y年m月d日，H时i分') }}<br/>
+            {% set weather=w.weather.HeWeather6[0] %}
+            {% set life=w.lifestyle.HeWeather6[0].lifestyle %}
+            {{ weather.now.cond_txt }}，{{ weather.now.wind_dir }}，气温<span class="badge bg-warning text-dark">{{ weather.now.tmp }}度</span><br/>
+            {{ life[0].brf }}，{{ life[1].brf }}，空气质量<span class="badge bg-warning text-dark">{{ life[7].brf }}</span>
+            
+            
+        </div>
+    </div><!--/bottom desc-->
+</div>
