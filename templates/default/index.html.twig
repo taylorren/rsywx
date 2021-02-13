@@ -214,8 +214,8 @@
     <script>
         function refresh()
         {
-            //var uri='http://api.rsywx.com/book/random/1';
-            var uri = 'https://api/book/random/1';
+            var uri='https://api.rsywx.com/book/random/1';
+            //var uri = 'https://api/book/random/1';
             fetch(uri).then(function (res) {
                 return res.json();
             }).then(function (json) {
