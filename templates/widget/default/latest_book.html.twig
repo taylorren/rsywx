@@ -18,9 +18,9 @@
         <div class="cbp-l-grid-agency-title">最新藏书</div>
         <div class="cbp-l-grid-agency-desc">{{ book.purchdate|date("Y年m月d日") }}收藏了<a href="{{ path('list', {type: 'author', key: book.author}) }}">{{ book.author }}</a>的<a href="{{ path('detail', {bookid: book.bookid}) }}">《{{ book.title }}》</a>。</div>
         <div class="cbp-l-grid-agency-title">藏书摘要</div>
-        <div class="cbp-l-grid-agency-desc">截止{{ date("now")|date("Y年m月d日") }}，总共藏书<span class="badge bg-warning text-dark">{{ summary.bc|number_format('0', '.', ',') }}</span>本，<br/>
-            计<span class="badge bg-warning text-dark">{{ summary.pc|number_format('0', '.', ',') }}</span>页，<span class="badge bg-warning text-dark">{{ summary.wc|number_format('0', '.', ',') }}</span>千字，<br/>
-            总访问量<span class="badge bg-warning text-dark">{{ summary.vc|number_format('0', '.', ',') }}</span>次。<br/><br/>
+        <div class="cbp-l-grid-agency-desc">截止{{ date("now")|date("Y年m月d日") }}，总共藏书<span class="badge bg-warning text-dark">{{ summary.bc|number_format('0', '.', ',') }}</span>本<br/>
+            计<span class="badge bg-warning text-dark">{{ summary.pc|number_format('0', '.', ',') }}</span>页，<span class="badge bg-warning text-dark">{{ summary.wc|number_format('0', '.', ',') }}</span>千字<br/>
+            总访问量<span class="badge bg-warning text-dark">{{ summary.vc|number_format('0', '.', ',') }}</span>次<br/><br/>
             <a href="{{ path('list', {type: 'title', key: 'all'}) }}" class="btn btn-sm btn-primary">浏览全部藏书 <i class="fa fa-arrow-right"></i></a>
         </div>
     </div><!--/bottom desc-->
