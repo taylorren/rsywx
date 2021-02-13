@@ -23,24 +23,15 @@
     <div class="container pt100 pb60">
         <div class='row'>
             <div class='col-lg-9 mb40'>
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">评论书籍</th>
-                            <th scope="col">评论标题</th>
-                            <th scope="col">写作日期</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for reading in res.readings %}
-                            <tr>
-                                <th scope="row"><a href="{{ path('detail', {bookid: reading.bookid}) }}"><img src="{{ include('widget/cover.html.twig', {bookid: reading.bookid, author: reading.author, title: reading.booktitle, width: 300}) }}"></a></th>
-                                <td><a href="{{ reading.URI }}" target="_blank">{{ reading.title }}</a></td>
-                                <td>{{ reading.create_at|date('Y年m月d日') }}</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                {% for read in res.readings %}
+                    {% if loop.index%3==1 %}
+                    <div class='row'>{% endif %}
+                        <div class='col-lg-3 mb40'><a href="{{ path('detail', {bookid: read.bookid}) }}"><img src="{{ include('widget/cover.html.twig', {bookid: read.bookid, author: read.author, title: read.title, width: 200}) }}" alt="{{ read.booktitle }}"></a><br/>
+                            书评：<a href="{{ read.URI }}" target="_blank">{{ read.title }}</a><br/>
+                            日期：{{ read.create_at|date('Y年m月d日') }}
+                        </div>
+                    {% if loop.index%3==0 %}</div>{% endif %}
+                {% endfor %}
                 <div class='bg-faded pd-card'>
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
