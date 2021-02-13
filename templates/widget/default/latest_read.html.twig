@@ -16,10 +16,12 @@
     </div><!--/cbp-caption-->
     <div class="cbp-title-dark mb30">
         <div class="cbp-l-grid-agency-title">最新书评</div>
-        <div class="cbp-l-grid-agency-desc">{{ read.datein|date("Y年m月d日")}}写下了<br/><a href="{{ path('detail', {bookid: read.bookid}) }}">{{ read.booktitle }}</a>的书评<br/><a href="{{ read.URI }}" target="_blank">{{ read.title }}</a></div>
+        <div class="cbp-l-grid-agency-desc">{{ read.datein|date("Y年m月d日")}}写下了<br/>《<a href="{{ path('detail', {bookid: read.bookid}) }}">{{ read.booktitle }}</a>》的书评<br/><a href="{{ read.URI }}" target="_blank">{{ read.title }}</a></div>
     </div><!--/bottom desc-->
     <div class="cbp-title-dark mb30">
         <div class="cbp-l-grid-agency-title">书评摘要</div>
-        <div class="cbp-l-grid-agency-desc">截止{{ date("now")|date("Y年m月d日") }}，总共写了<span class="badge bg-warning text-dark">{{ summary.hc }}</span>本书的书评，计<span class="badge bg-warning text-dark">{{ summary.rc }}</span>篇。</div>
+        <div class="cbp-l-grid-agency-desc">截止{{ date("now")|date("Y年m月d日") }}，总共写了<span class="badge bg-warning text-dark">{{ summary.hc }}</span>本书的书评，计<span class="badge bg-warning text-dark">{{ summary.rc }}</span>篇。<br/><br/>
+        <a href="{{ path('read') }}" class="btn btn-sm btn-primary">浏览全部书评 <i class="fa fa-arrow-right"></i></a>
+        </div>
     </div>
 </div>

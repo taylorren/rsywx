@@ -31,5 +31,13 @@ class ReadController extends AbstractController {
         
         return $this->render('widget/default/latest_read.html.twig', ['read'=>$read, 'summary'=>$summary]);
     }
+    
+    public function search($page=1)
+    {
+        $uri="read/list/$page";
+        $res=json_decode((string)$this->service->getService()->get($uri)->getBody())->data;
+        
+        return $this->render('read/list.html.twig', ['page'=>$page, 'res'=>$res]);
+    }
 
 }
