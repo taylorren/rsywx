@@ -48,14 +48,52 @@
                             <li class="list-inline-item">
                                 <i class="fa fa-tags"></i> 
                                 {%  for tag in book.tags %}<a href="{{ path('list', {type: 'tag', key: tag.tag}) }}">{{ tag.tag }}</a>&nbsp;{% endfor %}
+                                <a data-toggle="modal" data-target="#addtag"><i class="fa fa-plus white"></i></a>
                             </li>
                         </ul>
-                        <p>{{ book.intro|nl2br }}</p>
+                        <div class="bg-faded pd-card">
+                            <p>{{ book.intro|nl2br }}</p>
+                        </div>
+                    </div>
                 </article><!-- post article-->
 
 
             </div>
             {{ include('widget/book/detail_sidebar.html.twig', {book: book}) }}
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addtag">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title text-dark">增加自己的TAG</h4>
+                </div>
+                <div class="modal-body">
+                    <form method="get" action="{{ path('add_tag') }}" id="tagform" name="tagform" enctype="application/x-www-form-urlencoded" >
+                        <div class="row">
+                            <div class="col-sm-4 form-group">
+                                <label class="control-label text-dark" for="newtags">新增TAG</label>
+                                <input
+                                    type="text"
+                                    class="input-xlarge"
+                                    id="newtags"
+                                    name="newtags"
+                                    size="40"
+                                    >
+                                <input type="hidden" name="id" value="{{ book.id }}">
+                                <input type="hidden" name="bookid" value="{{ book.bookid }}">
+                                <p class="help-block ">（用空格分隔）</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">保存</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
