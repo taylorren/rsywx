@@ -9,7 +9,7 @@
                     <ul class="link-captions no-bottom-space">
                         <li><a href="{{ path('detail', {bookid: book.bookid}) }}"><i class="ti-link"></i></a></li>
                         <li><a id="rvi2" href="{{ include("widget/cover.html.twig", {bookid: book.bookid, title: book.title, author: book.author, width:600}) }}" class="cbp-lightbox"><i class="ti-zoom-in"></i></a></li>
-                        <li><a onclick="refresh()" }}"><i class="fa fa-refresh"></i></a></li>
+                        <li><a onclick="refresh_random_book()" }}"><i class="fa fa-refresh"></i></a></li>
                     </ul>
                 </div>
             </div>                      
