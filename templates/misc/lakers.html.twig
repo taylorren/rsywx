@@ -1,1 +1,94 @@
 {% extends 'base.html.twig' %}
+
+{% block title %}
+    任氏有无轩 | 湖人{{ year }}-{{ year+1 }}赛季
+{% endblock %}
+
+{% block body %}
+    <div class="page-breadcrumb title-space-lg bg-parallax parallax-overlay" data-jarallax='{"speed": 0.2}' style='background-image: url("/img/background.png")'>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ path('home') }}">首页</a></li>
+                        <li class="breadcrumb-item">湖人{{ year }}-{{ year+1}}赛季</li>
+                    </ol>
+                    <h1>前后14天的比赛记录</h1>
+                    {% set status=res.status %}
+                    <h5>胜：<span class="badge bg-warning text-dark">{{ status.win }}</span>，负<span class="badge bg-warning text-dark">{{ status.lose }}</span>，胜率：<span class="badge bg-warning text-dark">{{ (100*status.pct)|number_format(1, '.', ',') }}%</span></h5>
+                </div>
+            </div>
+        </div>
+    </div><!--page title end-->
+    <div class="container pt100 pb60">
+        <div class='row'>
+            <div class='col-lg-9 mb40'>
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">比赛日期</th>
+                            <th scope="col">对阵</th>
+                            <th scope="col">比分</th>
+                            <th scope="col">胜负</th>
+                            <th scope="col">备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for game in res.games %}
+                            <tr>
+                                <th scope="row">{{ game.id }}</th>
+                                <td>{{ game.dateplayed }}</td>
+                                <td>{{ game.team }}</td>
+                                <td>{{ game.selfscore }}:{{ game.oppscore }}</td>
+                                <td>{{ game.winlose }}</td>
+                                <td>{% if game.remark is null or game.remark is empty %}（无）{% else %}{{ game.remark }}{% endif %}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class='bg-faded pd-card'>
+                    <a href="https://www.nba.com/lakers/">
+                        <img src="/img/lakers.png" alt="Lakers" class="img-thumbnail"/>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-lg-3 mb40">
+                <div class="mb40">
+                    <h4 class="sidebar-title">湖人信息</h4>
+                    <ul class="list-unstyled categories">
+                        <li><a href="https://www.nba.com/lakers/" target="_blank">湖人队官网</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Los_Angeles_Lakers" target="_blank">维基页面</a></li>
+                        <li><a href="" onclick="return false;">夺冠：17次</a></li>
+                        <li><a href="" onclick="return false;">核心球员</a>
+                            <ul class="list-unstyled">
+                                <li><a href="https://www.nba.com/lakers/team/2544/lebron-james/" target="_blank">23号，Lebron James</a></li>
+                                <li><a href="https://www.nba.com/lakers/team/203076/anthony-davis/" target="_blank">3号，Anthony Davis</a></li>
+                                <li><a href="https://www.nba.com/lakers/team/201188/marc-gasol/" target="_blank">14号，Marc Gasol</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="" onclick="return false;">最近10场：<span class="badge bg-warning text-dark">{{ res.full[0].lastTenWin }}</span>胜<span class="badge bg-warning text-dark">{{ res.full[0].lastTenLoss }}</span>负</li></a>
+                        <li><a href="" onclick="return false;">连胜：<span class="badge bg-warning text-dark">{{ res.full[0].streak }}</span>场</a> 
+                        <li><a href="" onclick="return false;">西部排名：<span class="badge bg-warning text-dark">{{ res.full[0].conference.rank }}</span></a> 
+                    </ul>
+                </div><!--/col-->
+                <div>
+                    <h4 class="sidebar-title">最新新闻</h4>
+                    {% set rss=res.rss %}
+                    <ul class="list-unstyled">
+                        {% for r in rss %}
+                            <li class="media">
+                                <img class="d-flex mr-3 img-fluid" width="64" src="{{ r.url }}" alt="{{ r.news.title }}">
+                                <div class="media-body">
+                                    <h5 class="mt-0 mb-1"><a href="{{ r.news.link }}" target="_blank" title="{{ r.news.pubDate }}">{{ r.news.title }}</a></h5>
+                                        {{ r.news.pubDate|date('Y-m-d') }}
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

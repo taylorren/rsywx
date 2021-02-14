@@ -20,8 +20,9 @@
         <div class="cbp-l-grid-agency-desc"><a href="{{ path('detail', {bookid: book.bookid}) }}" id="rbt">《{{ book.title }}》</a><br/>
             【<span id="rbr">{{ book.region }}</span>】<a href="{{ path('list', {type: 'author', key: book.author}) }}" id='rba'>{{ book.author }}</a>著<br/>
             收藏于<span id="rbp">{{ book.purchdate }}</span><br/>
-            已访问<span class="badge bg-warning text-dark" id="rvc">{{ book.vc|number_format(0, '.', ',') }}</span>次，上次访问时间<span class="badge bg-warning text-dark" id="rvd">{{ book.lvt }}</span><br/><br/>
-            <button class="btn btn-sm btn-primary" id="btn_random_book_referesh" onclick="refresh()">换一本 <i class="fa fa-refresh"></i></button>
+            已访问<span class="badge bg-warning text-dark" id="rvc">{{ book.vc|number_format(0, '.', ',') }}</span>次<br/>
+            上次访问<span class="badge bg-warning text-dark" id="rvd">{{ book.lvt }}</span><br/><br/>
+            <button class="btn btn-sm btn-primary" id="btn_random_book_referesh" onclick="refresh_random_book()">换一本 <i class="fa fa-refresh"></i></button>
         </div>
     </div><!--/bottom desc-->
 </div>

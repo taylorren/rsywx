@@ -14,11 +14,11 @@ class MiscController extends AbstractController {
         $this->service = $service;
     }
 
-    private function _getData()
+    private function _getData($full)
     {
         $year=$_ENV['NBA_SEASON'];
         $span=$_ENV['NBA_SPAN'];
-        $uri="misc/lakers/$year/$span";
+        $uri="misc/lakers/$year/$span/$full";
         
         $res=json_decode((string)$this->service->getService()->get($uri)->getBody())->data;
         
@@ -26,13 +26,13 @@ class MiscController extends AbstractController {
     }
     public function lakers()
     {
-        [$res, $year]=$this->_getData();
+        [$res, $year]=$this->_getData('true');
         return $this->render('misc/lakers.html.twig', ['res'=>$res, 'year'=>$year]);
     }
     
     public function lakers_summary()
     {
-        [$res, $year]=$this->_getData();
+        [$res, $year]=$this->_getData('false');
         return $this->render('widget/default/lakers.html.twig', ['res'=>$res, 'year'=>$year]);
     }
     
