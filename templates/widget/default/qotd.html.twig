@@ -1,0 +1,24 @@
+<div class="cbp-item misc">
+    <div class="cbp-caption margin-bottom-20">
+        <div class="cbp-caption-defaultWrap">
+            <img src="/img/default.jpg" alt="今日金句">
+        </div>
+        <div class="cbp-caption-activeWrap">
+            <div class="cbp-l-caption-alignCenter">
+                <div class="cbp-l-caption-body">
+                    <ul class="link-captions no-bottom-space">
+                        <li><a href="/img/default.jpg" class="cbp-lightbox" data-title="今日金句"><i class="ti-zoom-in"></i></a></li>
+                    </ul>
+                </div>
+            </div>                      
+        </div>                              
+    </div><!--/cbp-caption-->
+    <div class="cbp-title-dark mb30">
+        <div class="cbp-l-grid-agency-title">今日金句</div>
+        <div class="cbp-l-grid-agency-desc">
+            <h4><span id="rqq" title="{{ q.quote|nl2br }}">{{ q.quote|nl2br }}</span></h4><br/>
+            <span id="rqs">{{ q.source }}</span><br/><br/>
+            <button class="btn btn-sm btn-primary" id="btn_qotd_referesh" onclick="refresh_qotd();">换一句 <i class="fa fa-refresh"></i></button>
+        </div>
+    </div><!--/bottom desc-->
+</div>
