@@ -1,0 +1,28 @@
+<div class="cbp-item blog">
+    <div class="cbp-caption margin-bottom-20">
+        <div class="cbp-caption-defaultWrap">
+            <img src="{{ img }}" alt="{{ res.title.rendered }}">
+        </div>
+        <div class="cbp-caption-activeWrap">
+            <div class="cbp-l-caption-alignCenter">
+                <div class="cbp-l-caption-body">
+                    <ul class="link-captions no-bottom-space">
+                        <li><a href="{{ res.link }}" target="_blank"><i class="ti-link"></i></a></li>
+                        <li><a href="{{ img }}" class="cbp-lightbox" data-title="{{ res.title.rendered }}"><i class="ti-zoom-in"></i></a></li>
+                    </ul>
+                </div>
+            </div>                      
+        </div>                              
+    </div><!--/cbp-caption-->
+    <div class="cbp-title-dark mb30">
+        <div class="cbp-l-grid-agency-title">最新的博客</div>
+        <div class="cbp-l-grid-agency-desc">
+            <a href="{{ res.link }}" target="_blank">{{ res.title.rendered }}</a><br/>
+            {{ res.date|date('Y年m月d日H时i分') }}<br/>
+        </div>
+        <div class="cbp-l-grid-agency-title">摘要</div>
+        <div class="cbp-l-grid-agency-desc">
+            {{ res.excerpt.rendered|striptags }}
+        </div>
+    </div><!--/bottom desc-->
+</div>

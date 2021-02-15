@@ -35,27 +35,7 @@
                     {{ render(controller('App\\Controller\\ReadController::latestRead', {max: 1})) }}
                     {{ render(controller('App\\Controller\\MiscController::lakers_summary')) }}
                     {{ render(controller('App\\Controller\\MiscController::weather')) }}
-                    <div class="cbp-item motion print logos web-design">
-                        <div class="cbp-caption margin-bottom-20">
-                            <div class="cbp-caption-defaultWrap">
-                                <img src="images/img5.jpg" alt="">
-                            </div>
-                            <div class="cbp-caption-activeWrap">
-                                <div class="cbp-l-caption-alignCenter">
-                                    <div class="cbp-l-caption-body">
-                                        <ul class="link-captions no-bottom-space">
-                                            <li><a href="folio-detail.html"><i class="ti-link"></i></a></li>
-                                            <li><a href="images/img5.jpg" class="cbp-lightbox" data-title="Design Object"><i class="ti-plus"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>                      
-                            </div>                              
-                        </div><!--/cbp-caption-->
-                        <div class="cbp-title-dark mb30">
-                            <div class="cbp-l-grid-agency-title">6666666666</div>
-                            <div class="cbp-l-grid-agency-desc">Landing pages</div>
-                        </div><!--/bottom desc-->
-                    </div>
+                    {{ render(controller('App\\Controller\\BlogController::latest')) }}
                     <div class="cbp-item graphic logos">
                         <div class="cbp-caption margin-bottom-20">
                             <div class="cbp-caption-defaultWrap">
@@ -170,7 +150,7 @@
     </script>
 {% endblock %}
 
-{% block script_random_book %}
+{% block rsywx_script %}
     <script type="text/javascript" src="/js/rsywx/random_book.js">    
     </script>
 {% endblock %}

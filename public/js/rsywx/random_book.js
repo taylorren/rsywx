@@ -16,7 +16,7 @@ function refresh_random_book()
                 $('#rbp').html(book.purchdate);
                 $('#rvc').html(book.vc);
                 $("#rvd").html(book.lvt);
-                var img = "https://api.rsywx.com/book/image/" + book.bookid + "/" + book.author + "/" + book.title + "/600";
+                var img = "https://api.rsywx.com/book/image/" + book.bookid + "/" + book.title + "/" + book.author + "/600";
 
                 $("#rvi").attr("src", img);
                 $("#rvi2").attr("href", img);
