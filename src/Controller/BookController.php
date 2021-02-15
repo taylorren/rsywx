@@ -29,7 +29,7 @@ class BookController extends AbstractController {
         return $this->render('book/detail.html.twig', ['book' => $book]);
     }
 
-    public function latestBook($max = 1): Response {
+    public function latest($max = 1): Response {
         $uri1 = "book/latest/$max"; //get the latest one book
         $uri2 = 'book'; //get summary 
         //$book=json_decode((string)$this->service->getService()->get($uri1)->getBody())->data[0];
@@ -46,7 +46,7 @@ class BookController extends AbstractController {
         return $this->render('widget/default/latest_book.html.twig', ['book' => $book, 'summary' => $summary]);
     }
 
-    public function randomBook($max = 3): Response {
+    public function random($max = 3): Response {
         $uri = "book/random/$max";
         $book = json_decode((string) ($this->service->getService()->get($uri)->getBody()))->data;
 

@@ -14,7 +14,7 @@ class ReadController extends AbstractController {
         $this->service = $service;
     }
     
-    public function latestRead($max=1)
+    public function latest($max=1)
     {
         $readUri="read/latest/$max";
         $summaryUri='read';

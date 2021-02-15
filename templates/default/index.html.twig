@@ -30,34 +30,17 @@
                     </div>
                 </div>
                 <div id="js-grid-lightbox-gallery" class="cbp">
-                    {{ render(controller('App\\Controller\\BookController::latestBook')) }}
-                    {{ render(controller('App\\Controller\\BookController::randomBook', {max: 1})) }}
-                    {{ render(controller('App\\Controller\\MiscController::lakers_summary')) }}
-                    {{ render(controller('App\\Controller\\ReadController::latestRead', {max: 1})) }}
+                    {{ render(controller('App\\Controller\\BookController::latest')) }}
+                    {{ render(controller('App\\Controller\\BookController::today')) }}
+                    {{ render(controller('App\\Controller\\BookController::random', {max: 1})) }}
+                    
+                    {{ render(controller('App\\Controller\\ReadController::latest', {max: 1})) }}
                     {{ render(controller('App\\Controller\\MiscController::weather')) }}
                     {{ render(controller('App\\Controller\\BlogController::latest')) }}
-                    {{ render(controller('App\\Controller\\BookController::today')) }}
-                    <div class="cbp-item identity print logos motion">
-                        <div class="cbp-caption margin-bottom-20">
-                            <div class="cbp-caption-defaultWrap">
-                                <img src="images/img7.jpg" alt="">
-                            </div>
-                            <div class="cbp-caption-activeWrap">
-                                <div class="cbp-l-caption-alignCenter">
-                                    <div class="cbp-l-caption-body">
-                                        <ul class="link-captions no-bottom-space">
-                                            <li><a href="folio-detail.html"><i class="ti-link"></i></a></li>
-                                            <li><a href="images/img7.jpg" class="cbp-lightbox" data-title="Design Object"><i class="ti-plus"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>                      
-                            </div>                              
-                        </div><!--/cbp-caption-->
-                        <div class="cbp-title-dark mb30">
-                            <div class="cbp-l-grid-agency-title">88888888888</div>
-                            <div class="cbp-l-grid-agency-desc">Landing pages</div>
-                        </div><!--/bottom desc-->
-                    </div>
+                    
+                    {{ render(controller('App\\Controller\\BlogController::today')) }}
+                    {{ render(controller('App\\Controller\\MiscController::lakers_summary')) }}
+                    
                     <div class="cbp-item identity motion web-design">
                         <div class="cbp-caption margin-bottom-20">
                             <div class="cbp-caption-defaultWrap">

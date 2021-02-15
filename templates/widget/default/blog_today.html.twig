@@ -1,0 +1,28 @@
+<div class="cbp-item blog">
+    <div class="cbp-caption margin-bottom-20">
+        <div class="cbp-caption-defaultWrap">
+            <img src="/img/default.jpg" alt="今日博客">
+        </div>
+        <div class="cbp-caption-activeWrap">
+            <div class="cbp-l-caption-alignCenter">
+                <div class="cbp-l-caption-body">
+                    <ul class="link-captions no-bottom-space">
+                        <li><a href="folio-detail.html"><i class="ti-link"></i></a></li>
+                        <li><a href="/img/default.jpg" class="cbp-lightbox" data-title="今日博客"><i class="ti-zoom-in"></i></a></li>
+                    </ul>
+                </div>
+            </div>                      
+        </div>                              
+    </div><!--/cbp-caption-->
+    <div class="cbp-title-dark mb30">
+        <div class="cbp-l-grid-agency-title">今日博客</div>
+        <div class="cbp-l-grid-agency-desc">历史上的{{ "now"|date('m') }}月{{ "now"|date('d') }}日的博客<br>
+            共写了<span class="badge bg-warning text-dark">{{ res|length }}</span>篇博文
+            <ul class="list-unstyled categories">
+                {% for blog in res %}
+                    <li><a href="{{ blog.link }}" target="_blank">{{ blog.title }}（{{ blog.date|date('Y年') }}）</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div><!--/bottom desc-->
+</div>

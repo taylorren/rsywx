@@ -31,10 +31,17 @@ class BlogController extends AbstractController {
     public function latest($max = 1) {
         $uri = "blog/latest/$max";
 
-        $res=json_decode((string)($this->service->getService()->get($uri)->getBody()))->data[0];
-        $img=$this->firstImg($res->content->rendered);
-        
-        return $this->render('widget/default/latest_blog.html.twig', ['res'=>$res, 'img'=>$img]);
+        $res = json_decode((string) ($this->service->getService()->get($uri)->getBody()))->data[0];
+        $img = $this->firstImg($res->content->rendered);
+
+        return $this->render('widget/default/latest_blog.html.twig', ['res' => $res, 'img' => $img]);
+    }
+
+    public function today() {
+        $uri='blog/today';
+        $res=json_decode((string) ($this->service->getService()->get($uri)->getBody()))->data;
+                
+        return $this->render('widget/default/blog_today.html.twig', ['res'=>$res]);
     }
 
 }
