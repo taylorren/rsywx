@@ -48,6 +48,8 @@ lakers:
     path: /lakers
     controller: App\Controller\MiscController::lakers
     
-book_today:
-    path: book/today
-    controller: App\Controller\BookController::today
+
+    
+book_today_detail:
+    path: /book/today
+    controller: App\Controller\BookController::today_detail

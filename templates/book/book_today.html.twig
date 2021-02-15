@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    任氏有无轩 | 历史上的{{ m }}月{{ d }}日藏书
+{% endblock %}
+{% block body %}
+    <div class="page-breadcrumb title-space-lg bg-parallax parallax-overlay" data-jarallax='{"speed": 0.2}' style='background-image: url("/img/background.png")'>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ path('home') }}">首页</a></li>
+                        <li class="breadcrumb-item">藏书列表</li>
+                    </ol>
+                    <h1>历史上的{{ m }}月{{ d }}日藏书</h1>
+                </div>
+            </div>
+        </div>
+    </div><!--page title end-->
+
+    <div class="container pt100 pb60">
+        <div class='row'>
+            <div class='col-lg-9 mb40'>
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">年份</th>
+                            <th scope="col">藏书数量</th>
+                            <th scope="col">藏书列表</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in books %}
+                            <tr>
+                                <th scope="row">{{ book.y}}年</th>
+                                <td><span class="badge bg-warning text-dark">{{ book.bc }}</span>本</td>
+                                <td>
+                                    <ul class="list-unstyled">
+                                        {% for book in book.books %}
+                                            <li>
+                                                <a href="{{ path('detail', {bookid: book.bookid}) }}">{{ book.title }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

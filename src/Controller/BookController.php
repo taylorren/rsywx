@@ -90,11 +90,28 @@ class BookController extends AbstractController {
         $today = new \DateTime();
         $m = $today->format('m');
         $d = $today->format("d");
+        
+        $res=$this->_getBookToday($m, $d);
+
+        return $this->render("widget/default/book_today.html.twig", ['books' => $res->books, 'm' => $m, 'd' => $d]);
+    }
+    
+    public function today_detail(){
+        $today = new \DateTime();
+        $m = $today->format('m');
+        $d = $today->format("d");
+        
+        $res=$this->_getBookToday($m, $d);
+
+        return $this->render("book/book_today.html.twig", ['books' => $res->books, 'm' => $m, 'd' => $d]);
+    }
+    
+    private function _getBookToday($m, $d){
         $uri = "book/today/$m/$d";
 
         $res = json_decode((string) ($this->service->getService()->get($uri)->getBody()))->data;
-
-        return $this->render("book/today.html.twig", ['books' => $res->books, 'm' => $m, 'd' => $d]);
+        
+        return $res;
     }
 
 }

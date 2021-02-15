@@ -1,0 +1,34 @@
+<div class="cbp-item book">
+    <div class="cbp-caption margin-bottom-20">
+        <div class="cbp-caption-defaultWrap">
+            <img src="/img/default.jpg" alt="今日藏书">
+        </div>
+        <div class="cbp-caption-activeWrap">
+            <div class="cbp-l-caption-alignCenter">
+                <div class="cbp-l-caption-body">
+                    <ul class="link-captions no-bottom-space">
+                        <li><a href="folio-detail.html"><i class="ti-link"></i></a></li>
+                        <li><a href="/img/default.jpg" class="cbp-lightbox" data-title="今日藏书"><i class="ti-zoom-in"></i></a></li>
+                    </ul>
+                </div>
+            </div>                      
+        </div>                              
+    </div><!--/cbp-caption-->
+    <div class="cbp-title-dark mb30">
+        <div class="cbp-l-grid-agency-title">今日藏书</div>
+        <div class="cbp-l-grid-agency-desc">
+            历史上的{{ m }}月{{ d }}日的藏书
+            {% if (books|length)==0 %}
+                <ul class="list-unstyled categories">
+                    <li>没有藏书</li>
+                </ul>
+            {% else %}
+                <ul class="list-unstyled categories">
+                    {% for book in books %}
+                        <li><a href="{{ path('book_today_detail') }}">{{ book.y }}年藏书<span class="badge bg-warning text-dark">{{ book.bc }}</span>本</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div><!--/bottom desc-->
+</div>
