@@ -41,9 +41,36 @@ class MiscController extends AbstractController {
     }
 
     public function qotd() {
-        $uri='misc/qotd';
+        $uri = 'misc/qotd';
         $res = json_decode((string) $this->service->getService()->get($uri)->getBody())->data;
-        return $this->render('widget/default/qotd.html.twig', ['q'=>$res]);
+        return $this->render('widget/default/qotd.html.twig', ['q' => $res]);
+    }
+
+    public function wpme() {
+        $uri = 'misc/wpme';
+        $res = json_decode((string) $this->service->getService()->get($uri)->getBody())->data;
+        return $this->render('widget/default/wpme.html.twig', ['w' => $res]);
+    }
+
+    public function wpme_detail($word) {
+        $uri = "misc/wpme/$word";
+
+        try {
+            $res = json_decode((string) $this->service->getService()->get($uri)->getBody())->data;
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            echo('eeeeee');
+            die();
+        }
+
+
+        if (property_exists($res, 'pro')) {
+            $hits = $res->pro;
+            foreach ($hits as &$hit) {
+                $hit->highlight->body[0] = str_replace('[hl]', "<span class='badge bg-warning text-dark'>", $hit->highlight->body[0]);
+                $hit->highlight->body[0] = str_replace('[/hl]', "</span>", $hit->highlight->body[0]);
+            }
+        }
+        return $this->render('misc/wpme.html.twig', ['w' => $res]);
     }
 
 }

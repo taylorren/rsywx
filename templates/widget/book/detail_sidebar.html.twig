@@ -66,7 +66,7 @@
             <ul class="list-unstyled">
                 {% for review in book.reviews %}
                 <li class="media">
-                    <img class="d-flex mr-3 img-fluid" width="40%" src="{{ render(controller("App\\Controller\\BlogController::firstImg", {'uri': review.URI})) }}" alt="{{ review.title }}">
+                    <img class="d-flex mr-3 img-fluid" width="40%" src="{{ render(controller("App\\Controller\\BlogController::firstImgByUri", {'uri': review.URI})) }}" alt="{{ review.title }}">
                     
                     <div class="media-body">
                         <h5 class="mt-0 mb-1"><a href="{{ review.URI}}">{{ review.title }}</a></h5>

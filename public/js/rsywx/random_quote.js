@@ -6,8 +6,9 @@ function refresh_qotd()
         return res.json();
     }).then(function (json) {
         var quote = json.data;
-        console.log(quote);
+        
         $('#rqq').html(quote.quote);
+        $('#rqq').attr('title', quote.quote);
         $('#rqs').html(quote.source);    
     });
 }

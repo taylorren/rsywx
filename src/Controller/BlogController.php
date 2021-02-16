@@ -27,7 +27,15 @@ class BlogController extends AbstractController {
 
         return $img;
     }
-
+    public function firstImgByUri($uri)
+    {
+        $text=file_get_contents($uri);
+        $img=$this->firstImg($text);
+        
+        return $this->render('blog/first_image.html.twig', ['img'=>$img]);
+    }
+    
+    
     public function latest($max = 1) {
         $uri = "blog/latest/$max";
 

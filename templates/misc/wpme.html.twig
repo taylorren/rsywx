@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="page-breadcrumb title-space-lg bg-parallax parallax-overlay" data-jarallax='{"speed": 0.2}' style='background-image: url("images/bg3.jpg")'>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ path('home') }}">首页</a></li>
+                        <li class="breadcrumb-item">Word Power Made Easy</li>
+                    </ol>
+                    <h1>{{ w.word }}</h1>
+                </div>
+            </div>
+        </div>
+    </div><!--page title end-->
+
+    <div class='container mb70 pt80'>
+        <div class="row">
+            <div class="col-md-3 mb30">
+                <div class="mb30">
+                    <h5 class="mb20">字根</h5>
+                    <span class="badge bg-warning text-dark">{{ w.root }}</span>
+                </div>
+                <div class="mb30">
+                    <h5 class="mb20">收录时间：</h5>
+                    <span class="badge bg-warning text-dark">{{ w.datein }}</span>
+                </div>
+
+            </div>
+            <div class="col-md-6 mb30">
+                <h4 class='mb20'>{{ w.title }} <span class="badge bg-warning text-dark">=</span> {{ w.word }}</h4>
+                <p>{{ w.desc }}</p>
+                <h4>例句</h4>
+                <blockquote>{{ w.sample }}</blockquote>
+                <h4>生活例句</h4>
+                {% if w.pro|length==0 %}
+                    （暂时没有找到生活中的例句）
+                {% else %}
+                    <ol class="list-unstyled">
+                    {% for hit in w.pro %}
+                        <li>{{ hit.highlight.body.0|raw  }}<br/>
+                        <audio controls="true" preload="none" controlsList="nodownload">
+                            <source src="https://voicecup.com/play?key=ezPLp94tO2&{{ hit.filename_audio }}&filetype=mp4&start={{ hit.start_precise }}&duration={{ hit.duration_precise }}&subs_id={{ hit.id }}" type="audio/mp4">
+                            <source src="https://voicecup.com/play?key=ezPLp94tO2&filename={{ hit.filename_audio }}&filetype=webm&start={{ hit.start_precise }}&duration={{ hit.duration_precise }}&subs_id={{ hit.id }}" type="audio/webm">
+                        </audio>
+                        </li>
+                    {% endfor %}
+                    </ol>
+                {% endif %}
+            </div>
+            <div class="col-md-3 mb30">
+                <h4 class='mb20'>读音</h4>
+                <ul class="list-icon list-unstyled">
+                    <li>英式音标：[{{ w.epro }}]</li>
+                    <li>美式音标：[{{ w.apro }}]</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Carousel -->
+
+    </div>
+
+{% endblock %}
+
+{% block title %}
+    任氏有无轩 | WPME：{{ w.word }}
+{% endblock %}

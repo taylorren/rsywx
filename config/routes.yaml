@@ -48,7 +48,9 @@ lakers:
     path: /lakers
     controller: App\Controller\MiscController::lakers
     
-
+wpme:
+    path: /wpme/{word}
+    controller: App\Controller\MiscController::wpme_detail
     
 book_today_detail:
     path: /book/today

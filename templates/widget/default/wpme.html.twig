@@ -1,0 +1,24 @@
+<div class="cbp-item misc">
+    <div class="cbp-caption margin-bottom-20">
+        <div class="cbp-caption-defaultWrap">
+            <img src="/img/default.jpg" alt="Word Power Made Easy">
+        </div>
+        <div class="cbp-caption-activeWrap">
+            <div class="cbp-l-caption-alignCenter">
+                <div class="cbp-l-caption-body">
+                    <ul class="link-captions no-bottom-space">
+                        <li><a href="/img/default.jpg" class="cbp-lightbox" data-title="WPME"><i class="ti-zoom-in"></i></a></li>
+                    </ul>
+                </div>
+            </div>                      
+        </div>                              
+    </div><!--/cbp-caption-->
+    <div class="cbp-title-dark mb30">
+        <div class="cbp-l-grid-agency-title">WPME</div>
+        <div class="cbp-l-grid-agency-desc">
+            <h4><a href="{{ path('wpme', {word: w.word}) }}" id="rww"><span id="rwd" title="{{ w.desc }}">{{ w.word }}</span></a></h4>
+            <span id="rwr">{{ w.root }}</span><br/><br/>
+            <button class="btn btn-sm btn-primary" id="btn_qotd_referesh" onclick="refresh_wpme();">换一个词 <i class="fa fa-refresh"></i></button>
+        </div>
+    </div><!--/bottom desc-->
+</div>
