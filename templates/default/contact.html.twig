@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    任氏有无轩 | 联系站长
+{% endblock %}
+{% block body %}
+    <div class="page-breadcrumb title-space-lg bg-parallax parallax-overlay" data-jarallax='{"speed": 0.2}' style='background-image: url("img/background.png")'>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ path('home') }}">首页</a></li>
+                        <li class="breadcrumb-item">联系站长</li>
+                    </ol>
+                    <h1>联系站长</h1>
+                </div>
+            </div>
+        </div>
+    </div><!--page title end-->
+    <div class="container pt90 pb50">
+        <div class="row">
+            <div class="col-md-6 mb40">
+
+                <h4 class="text-uppercase">长居地</h4>
+                <p>苏州</p>
+                <br>
+                <h4 class="text-uppercase">其他活动地</h4>
+                <p>上海，奥斯汀</p>
+                <h4 class="text-uppercase">Email</h4>
+                <p><a href="mailto:taylor.ren@gmail.com">taylor.ren@gmail.com</a></p>
+            </div>
+            <div class="col-md-6 mb40">
+                <h2>欢迎您和站长联系</h2>
+            </div>
+        </div>
+    </div>
+    <div class="bg-white">
+        <div class="container pt50 pb30">
+            <!-- Carousel -->
+            <div class="carousel-client owl-carousel owl-theme">
+                <div class="item text-center">
+                    <img src="/img/tr.jpg" alt="Taylor Ren" title="Taylor Ren" class="img-fluid">
+                </div>
+                <div class="item text-center">
+                    <img src="/img/gr.jpg" alt="Gloria Rong" title="Gloria Rong" class="img-fluid">
+                </div>
+                <div class="item text-center">
+                    <img src="/img/pr.jpg" alt="Peter Ren" title="Peter Ren" class="img-fluid">
+                </div>
+                <div class="item text-center">
+                    <img src="/img/tgpr.jpg" alt="Family" title="Family" class="img-fluid">
+                </div>
+                <div class="item text-center">
+                    <img src="/img/pr20110203.jpg" alt="PR in Yellow Mountain" title="PR in Yellow Mountain" class="img-fluid">
+                </div>
+                pr20110203.jpg
+            </div> <!-- /Carousel -->
+        </div><!--/.clients-->
+    </div>
+{% endblock %}
