@@ -58,8 +58,7 @@ class MiscController extends AbstractController {
         try {
             $res = json_decode((string) $this->service->getService()->get($uri)->getBody())->data;
         } catch (\GuzzleHttp\Exception\ClientException $e) {
-            echo('eeeeee');
-            die();
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig');
         }
 
 

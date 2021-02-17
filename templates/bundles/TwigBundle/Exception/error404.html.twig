@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="page-breadcrumb title-space-lg bg-parallax parallax-overlay" data-jarallax='{"speed": 0.2}' style='background-image: url("/img/background.png")'>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ path('home') }}">首页</a></li>
+                        <li class="breadcrumb-item">404</li>
+                    </ol>
+                    <h1>矮油！找不到页面了！</h1>
+                </div>
+            </div>
+        </div>
+    </div><!--page title end-->
+
+    <div class="container pt100 pb100">
+        <div class='row'>
+            <div class='col-lg-6 col-md-8'>
+                <img src="/img/error-404-http-not-found.png"/>
+                <p class='lead'>
+                    我们找不到<span class="badge bg-warning text-dark">{{ app.request.uri }}</span>的资源。 
+                </p>
+                <a href='{{ path('home') }}' class='btn btn-outline-secondary btn rounded'>回首页</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block title %}
+    任氏有无轩 | 404
+{% endblock %}

@@ -20,8 +20,7 @@ class BookController extends AbstractController {
             $res = $this->service->getService()->get($uri);
         } catch (\GuzzleHttp\Exception\ClientException $e) {
             //TODO: redirec to a better looking "not found page"
-            echo('error');
-            die();
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig');
         }
 
         $book = json_decode((string) $res->getBody())->data;
