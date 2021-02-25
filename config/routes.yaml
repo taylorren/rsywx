@@ -15,7 +15,7 @@ contact:
     controller: App\Controller\DefaultController::contact
     
 detail:
-    path: /book/{bookid}.html
+    path: /books/{bookid}.html
     controller: App\Controller\BookController::detail
     
 list:
@@ -55,3 +55,7 @@ wpme:
 book_today_detail:
     path: /book/today
     controller: App\Controller\BookController::today_detail
+    
+admin:
+    path: /admin
+    controller: App\Controller\AdminController::admin
