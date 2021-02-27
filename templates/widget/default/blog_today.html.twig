@@ -19,7 +19,7 @@
             共写了<span class="badge bg-warning text-dark">{{ res|length }}</span>篇博文
             <ul class="list-unstyled categories">
                 {% for blog in res %}
-                    <li><a href="{{ blog.link }}" target="_blank">{{ blog.title }}（{{ blog.date|date('Y年') }}）</a></li>
+                    <li><a href="{{ blog.link }}" target="_blank">{{ blog.title }}（{{ blog.date|date('Y年') }}，浏览<span class="badge bg-warning text-dark">{{ blog.vc }}</span>次）</a></li>
                 {% endfor %}
             </ul>
         </div>
