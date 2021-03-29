@@ -20,7 +20,7 @@
         {% set lose=res.status.lose %}
         <div class="cbp-l-grid-agency-desc">本赛季湖人胜场<span class="badge bg-warning text-dark">{{ win }}</span>，负场<span class="badge bg-warning text-dark">{{ lose }}</span><br/>
             胜率<span class="badge bg-warning text-dark">{{ (res.status.pct*100)|number_format(1, '.', ',') }}%</span><br/><br/>
-            <a href="{{ path("lakers")}}" class="btn btn-sm btn-primary">赛季场次明细<br/>（时间比较长） <i class="fa fa-arrow-right"></i></a>
+            <a href="{{ path("lakers")}}" class="btn btn-sm btn-primary">赛季场次明细 <i class="fa fa-arrow-right"></i></a>
         </div>
     </div><!--/bottom desc-->
 </div>
