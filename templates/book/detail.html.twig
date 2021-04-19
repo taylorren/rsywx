@@ -47,8 +47,8 @@
                             </li>
                             <li class="list-inline-item">
                                 <i class="fa fa-tags"></i> 
-                                {%  for tag in book.tags %}<a href="{{ path('list', {type: 'tag', key: tag.tag}) }}">{{ tag.tag }}</a>&nbsp;{% endfor %}
-                                <a data-toggle="modal" data-target="#addtag"><i class="fa fa-plus white"></i></a>
+                                {%  for tag in book.tags %}<a href="{{ path('list', {type: 'tag', key: tag.tag}) }}"><span class="badge bg-warning text-dark">{{ tag.tag }}</span></a>&nbsp;{% endfor %}
+                                <span class="badge bg-warning text-dark"><a data-toggle="modal" data-target="#addtag"><i class="fa fa-plus white"></i></a></span>
                             </li>
                         </ul>
                         <div class="bg-faded pd-card">
