@@ -8,7 +8,7 @@
                 <div class="cbp-l-caption-body">
                     <ul class="link-captions no-bottom-space">
                         <li><a href="{{ read.URI }}" target="_blank"><i class="ti-link"></i></a></li>
-                        <li><a href="{{ include('widget/cover.html.twig', {bookid: read.bookid, author: read.author, title: read.title, width: 600}) }}" class="cbp-lightbox" data-title="Design Object"><i class="ti-zoom-in"></i></a></li>
+                        <li><a href="{{ include('widget/cover.html.twig', {bookid: read.bookid, author: read.author, title: read.title, width: 600}) }}" class="cbp-lightbox" data-title="书评：{{ read.booktitle }}"><i class="ti-zoom-in"></i></a></li>
                     </ul>
                 </div>
             </div>                      
